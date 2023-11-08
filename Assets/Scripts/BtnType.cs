@@ -18,6 +18,10 @@ public class BtnType : MonoBehaviour
                 Application.Quit();
                 Debug.Log("종료");
                 break;
+            case BTNType.Setting:
+                SceneManager.LoadScene("SettingScene");
+                Debug.Log("소리설정");
+                break ;
         }
     }
     void Start()
