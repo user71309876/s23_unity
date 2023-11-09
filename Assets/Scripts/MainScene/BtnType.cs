@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
+
     public void OnBtnClick()
     {
         switch (currentType)
@@ -22,6 +23,9 @@ public class BtnType : MonoBehaviour
                 SceneManager.LoadScene("SettingScene");
                 Debug.Log("소리설정");
                 break ;
+            case BTNType.Back:
+                Debug.Log("돌아가기");
+                break;
         }
     }
     void Start()
