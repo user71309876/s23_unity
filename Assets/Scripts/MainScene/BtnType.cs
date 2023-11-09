@@ -6,9 +6,12 @@ using UnityEngine.SceneManagement;
 public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
+    public static Scene currentScene;
+    
 
     public void OnBtnClick()
     {
+        
         switch (currentType)
         {
             case BTNType.Start:
@@ -21,21 +24,10 @@ public class BtnType : MonoBehaviour
                 break;
             case BTNType.Setting:
                 SceneManager.LoadScene("SettingScene");
-                Debug.Log("소리설정");
                 break ;
             case BTNType.Back:
-                Debug.Log("돌아가기");
+                SceneManager.LoadScene("MainScene");
                 break;
         }
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
