@@ -2350,7 +2350,7 @@ GameObject:
   - component: {fileID: 1517290722}
   - component: {fileID: 1517290721}
   m_Layer: 5
-  m_Name: StageStart
+  m_Name: GameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
