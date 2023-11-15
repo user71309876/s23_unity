@@ -12,6 +12,8 @@ public class Missile : MonoBehaviour
     [SerializeField] LayerMask m_layerMask = 0;//원하는 레이어검출하는 마스크
     [SerializeField] ParticleSystem m_psEffect = null;//파티클 시스템 변수
 
+    GameObject level_event;
+
     void SearchEnemy()//표적 탐색 함수
     {
         //100미터 이내의 특정 콜라이더 검출
@@ -40,6 +42,8 @@ public class Missile : MonoBehaviour
     {
         m_rigid = GetComponent<Rigidbody>();
         StartCoroutine(LaunchDelay());
+
+        level_event = GameObject.Find("LevelUpEvent");
     }
 
     void Update()
@@ -66,6 +70,7 @@ public class Missile : MonoBehaviour
             Debug.Log("파괴");
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
         }
     }
 }

@@ -37,7 +37,7 @@ public class LevelUpEvent : MonoBehaviour
     }
 
     
-    void GainExp()    // 경험치 얻었을 경우
+    public void GainExp()    // 경험치 얻었을 경우
     {
         currentExp += expInterval;
         UpdateExpText();
