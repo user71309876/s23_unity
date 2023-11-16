@@ -88,8 +88,8 @@ GameObject:
   - component: {fileID: 3485051924790916601}
   - component: {fileID: 3485051924790916582}
   - component: {fileID: 3485051924790916583}
-  - component: {fileID: 3485051924790916603}
   - component: {fileID: 4692002731568064511}
+  - component: {fileID: 7365190151147516600}
   m_Layer: 5
   m_Name: StageButton
   m_TagString: StageButton
@@ -202,8 +202,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3485051924790916603}
-        m_TargetAssemblyTypeName: Click, Assembly-CSharp
+      - m_Target: {fileID: 7365190151147516600}
+        m_TargetAssemblyTypeName: ScrollButtonHandler, Assembly-CSharp
         m_MethodName: StageClick
         m_Mode: 1
         m_Arguments:
@@ -214,18 +214,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3485051924790916603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3485051924790916581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805f5b274c01c4d9482d1295019fe439, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4692002731568064511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,8 +231,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3485051924790916603}
-          m_TargetAssemblyTypeName: Click, Assembly-CSharp
+        - m_Target: {fileID: 7365190151147516600}
+          m_TargetAssemblyTypeName: ScrollButtonHandler, Assembly-CSharp
           m_MethodName: StageHoverIn
           m_Mode: 1
           m_Arguments:
@@ -259,8 +247,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 3485051924790916603}
-          m_TargetAssemblyTypeName: Click, Assembly-CSharp
+        - m_Target: {fileID: 7365190151147516600}
+          m_TargetAssemblyTypeName: ScrollButtonHandler, Assembly-CSharp
           m_MethodName: StageHoverOut
           m_Mode: 1
           m_Arguments:
@@ -271,6 +259,19 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &7365190151147516600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3485051924790916581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31af7f66d82064f2f917911b6e2e7ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentSR: {fileID: 0}
 --- !u!1 &3485051925250473327
 GameObject:
   m_ObjectHideFlags: 0
