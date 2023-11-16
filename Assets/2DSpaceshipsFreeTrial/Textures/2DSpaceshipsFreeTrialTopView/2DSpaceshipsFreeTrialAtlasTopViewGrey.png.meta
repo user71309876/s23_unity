@@ -141,12 +141,12 @@ TextureImporter:
       name: 2DSpaceshipsFreeTrialAtlasTopViewGrey_0
       rect:
         serializedVersion: 2
-        x: 29
+        x: 36
         y: 446
-        width: 756
-        height: 1567
+        width: 205
+        height: 491
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -162,10 +162,10 @@ TextureImporter:
       name: 2DSpaceshipsFreeTrialAtlasTopViewGrey_1
       rect:
         serializedVersion: 2
-        x: 842
-        y: 813
-        width: 657
-        height: 1134
+        x: 572
+        y: 446
+        width: 206
+        height: 491
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,29 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2e9fc7ea93d95b40ae2618c81d893c8
+      spriteID: 41f49a4e7305342efb7c97075dc5f97d
       internalID: 21300002
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2DSpaceshipsFreeTrialAtlasTopViewGrey_2
-      rect:
-        serializedVersion: 2
-        x: 1110
-        y: 40
-        width: 914
-        height: 730
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3cba22e885c43a04ea5caa17deea39e6
-      internalID: 21300004
       vertices: []
       indices: 
       edges: []
