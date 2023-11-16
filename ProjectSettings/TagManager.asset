@@ -6,6 +6,8 @@ TagManager:
   tags:
   - StageButton
   - Enemy
+  - midEnemy
+  - Boss
   layers:
   - Default
   - TransparentFX

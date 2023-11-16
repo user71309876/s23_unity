@@ -115,8 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d38ec13ce2bee419e0d23443f6c94a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_speed: 50
+  midspawnEnemy: {fileID: 2322770198688502193, guid: ddf33dbdc1bd12a4d907a49dd704e2fd, type: 3}
+  smallspawnEnemy: {fileID: 8234986144241946606, guid: 91c9eb9a33b9bf943b441aee4a4875f2, type: 3}
+  m_speed: 30
   m_layerMask:
     serializedVersion: 2
     m_Bits: 512
-  m_psEffect: {fileID: 0}
