@@ -27,7 +27,7 @@ public class LevelUpEvent : MonoBehaviour
     public RectTransform cardObejcts;   // Card 부모 오브젝트 위치
     public GameObject cardButtons;  // Card 부모 오브젝트
     
-    private bool isGamePaused = false;  // 게임 멈췄는지 체크
+    //private bool isGamePaused = false;  // 게임 멈췄는지 체크
 
 
     private void Awake()
@@ -76,10 +76,11 @@ public class LevelUpEvent : MonoBehaviour
             targetProgress = 1.0f;  // 우선, 100%로 경험치 할당 => Update 함수에서 다음 할당량 처리
 
             // 카드 오픈
-            if(!isGamePaused)
-            {
-                PauseGameAndOpenCard();
-            }
+            PauseGameAndOpenCard();
+            //if (!isGamePaused)
+            //{
+                
+            //}
         }
     }
 
@@ -110,11 +111,11 @@ public class LevelUpEvent : MonoBehaviour
     {
         // 게임 정지
         Time.timeScale = 0f;
-        isGamePaused = true;
+        //isGamePaused = true;
 
         // 카드 외의 화면 어둡게 활성화
         darkPanel.SetActive(true);
-        darkPanel.GetComponent<Image>().DOFade(0.7f, 1f);
+        darkPanel.GetComponent<Image>().DOFade(0.7f, 1f).SetUpdate(true);
 
         // 카드 open
         CardMove(new Vector3(0, -600, 10));
@@ -124,7 +125,7 @@ public class LevelUpEvent : MonoBehaviour
     {   
         // 게임 재시작
         Time.timeScale = 1f;
-        isGamePaused = false;
+        //isGamePaused = false;
 
         // 어둡게 만든 화면 밝게 만들고 비활성화
         darkPanel.GetComponent<Image>().DOFade(0f, 1f).OnComplete(() => darkPanel.SetActive(false));
