@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    public GameObject midspawnEnemy;   // 중간 적 오브젝트
+    public GameObject smallspawnEnemy; // 작은 적 오브젝트
+
     Rigidbody m_rigid = null;//리지드바디 변수
     Transform m_tfTarget = null;//표적 변수
 
     [SerializeField] float m_speed = 0f;//최고속도
     float m_currentSpeed = 0f;//현재속도
     [SerializeField] LayerMask m_layerMask = 0;//원하는 레이어검출하는 마스크
-    [SerializeField] ParticleSystem m_psEffect = null;//파티클 시스템 변수
+    //[SerializeField] ParticleSystem m_psEffect = null;//파티클 시스템 변수
 
     GameObject level_event;
 
@@ -32,7 +35,7 @@ public class Missile : MonoBehaviour
         yield return new WaitUntil(() => m_rigid.velocity.y < 0f);
         yield return new WaitForSeconds(0.1f);
         SearchEnemy();
-        m_psEffect.Play();
+        //m_psEffect.Play();
 
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
@@ -65,6 +68,22 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.CompareTag("Boss"))
+        {
+            Debug.Log("파괴");
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            midSpawnObject();
+            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
+        }
+        if (collision.transform.CompareTag("midEnemy"))
+        {
+            Debug.Log("파괴");
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+            smallSpawnObject();
+            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
+        }
         if (collision.transform.CompareTag("Enemy"))
         {
             Debug.Log("파괴");
@@ -72,5 +91,14 @@ public class Missile : MonoBehaviour
             Destroy(gameObject);
             level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
         }
+    }
+
+    void midSpawnObject()  // 중간 적 스폰
+    {
+        GameObject newObject = Instantiate(midspawnEnemy, m_tfTarget.position, Quaternion.identity); // 새 오브젝트 초기 설정
+    }
+    void smallSpawnObject()  // 작은 적 스폰
+    {
+        GameObject newObject = Instantiate(smallspawnEnemy, m_tfTarget.position, Quaternion.identity); // 새 오브젝트 초기 설정
     }
 }
