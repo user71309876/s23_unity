@@ -1077,10 +1077,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fed2269e0445b3e459e9ed66e46c1b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnEnemy: {fileID: 4234837315600383954, guid: d8530643624c36c46aa223992d8110ac, type: 3}
+  spawnEnemy: {fileID: 7578515484819903962, guid: 6c0c1f7f8d933f845a78d06aef24ed7d, type: 3}
   center: {fileID: 972443134}
-  minSpawnInterval: 0.2
-  maxSpawnInterval: 1
+  minSpawnInterval: 20
+  maxSpawnInterval: 20
 --- !u!4 &584820153
 Transform:
   m_ObjectHideFlags: 0

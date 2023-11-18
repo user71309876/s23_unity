@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissilePre
       objectReference: {fileID: 0}
+    - target: {fileID: 1189775040448760, guid: 09953c8eb4fcb7d4b8e4940fcef25e8b, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4212556119962540, guid: 09953c8eb4fcb7d4b8e4940fcef25e8b, type: 3}
       propertyPath: m_RootOrder
       value: 0

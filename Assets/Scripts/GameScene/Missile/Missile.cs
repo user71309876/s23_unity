@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    public GameObject midspawnEnemy;   // 중간 적 오브젝트
-    public GameObject smallspawnEnemy; // 작은 적 오브젝트
-
     Rigidbody m_rigid = null;//리지드바디 변수
     Transform m_tfTarget = null;//표적 변수
 
@@ -68,37 +65,12 @@ public class Missile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Boss"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
             Debug.Log("파괴");
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            midSpawnObject();
-            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
-        }
-        if (collision.transform.CompareTag("midEnemy"))
-        {
-            Debug.Log("파괴");
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            smallSpawnObject();
-            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
-        }
-        if (collision.transform.CompareTag("Enemy"))
-        {
-            Debug.Log("파괴");
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
+            Destroy(gameObject);//미사일 파괴
         }
     }
 
-    void midSpawnObject()  // 중간 적 스폰
-    {
-        GameObject newObject = Instantiate(midspawnEnemy, m_tfTarget.position, Quaternion.identity); // 새 오브젝트 초기 설정
-    }
-    void smallSpawnObject()  // 작은 적 스폰
-    {
-        GameObject newObject = Instantiate(smallspawnEnemy, m_tfTarget.position, Quaternion.identity); // 새 오브젝트 초기 설정
-    }
+    
 }
