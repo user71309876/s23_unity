@@ -69,6 +69,7 @@ public class Missile : MonoBehaviour
         {
             Debug.Log("ÆÄ±«");
             Destroy(gameObject);//¹Ì»çÀÏ ÆÄ±«
+            
         }
     }
 
