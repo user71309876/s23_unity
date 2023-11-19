@@ -33,13 +33,9 @@ public class ScrollButtonHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     // 버튼을 클릭했을 때 이벤트
     public void StageClick(){
-        Debug.Log("click!!");
+        // 버튼 이름의 마지막 숫자를 clickButton에 저장한 후 hashmap에 저장, key는 stageNumber를 사용
         clickButtonNumber=int.Parse(this.gameObject.name.Substring(this.gameObject.name.Length-1));
         Debug.Log(clickButtonNumber);
-        setButtonName();
-    }
-
-    public void setButtonName(){
         PlayerPrefs.SetInt(stageNumber,clickButtonNumber);
     }
 

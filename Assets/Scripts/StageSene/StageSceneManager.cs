@@ -32,7 +32,6 @@ public class StageSceneManager : MonoBehaviour
     }
     public void GoGameScene(){
         SceneManager.LoadScene("GameScene");
-        Debug.Log(PlayerPrefs.GetInt(ScrollButtonHandler.stageNumber));
     }
     public void GoSettingScene(){
         SceneManager.LoadScene("SettingScene");
