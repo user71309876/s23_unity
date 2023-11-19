@@ -16,13 +16,24 @@ public class MissileLauncher : MonoBehaviour
     {
         while (true)
         {
-            //미사일 생성
-            GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, Quaternion.identity);
+            if(HasTarget())
+            {
+                //미사일 생성
+                GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, Quaternion.identity);
 
-            //위로 퉁날림
-            t_missile.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
+                //위로 퉁날림
+                t_missile.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
+            }
+            
 
             yield return new WaitForSeconds(1.5f); // 1.5초 후에 다시 날림 여기서 공격 속도 조절
         }
+    }
+
+    private bool HasTarget()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, LayerMask.GetMask("EnemyLayer"));
+
+        return (colliders.Length > 0);
     }
 }

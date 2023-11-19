@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+    Enemy 1 프리팹 초기화 : 회전(-30, -5, -25), 크기(0.16, 0.16, 0.16)
+
+ */
 
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] Slider hp_splider;
 
     Vector2 pos;//부서지기 전 위치 파악해서 그 보다 작은 적 객체 넣기 위한 변수
-    public GameObject midspawnEnemy;   // 중간 적 오브젝트
-    public GameObject smallspawnEnemy; // 작은 적 오브젝트
+    //public GameObject midspawnEnemy;   // 중간 적 오브젝트
+    //public GameObject smallspawnEnemy; // 작은 적 오브젝트
+    public GameObject[] nextspawnEnemy = new GameObject[1]; // 파괴된 후, 소환할 오브젝트 설정
 
     GameObject level_event;
     // Start is called before the first frame update
@@ -42,6 +47,12 @@ public class EnemyController : MonoBehaviour
 
     void SpawnObject()  // 적 스폰
     {
-        GameObject newObject = Instantiate(midspawnEnemy, pos, Quaternion.identity); // 새 오브젝트 초기 설정
+        if(nextspawnEnemy != null && nextspawnEnemy.Length > 0)
+        {
+            int randomIndex = Random.Range(0, nextspawnEnemy.Length);
+
+            Quaternion rotation = Quaternion.Euler(-30f, -5f, -25f);
+            GameObject newObject = Instantiate(nextspawnEnemy[randomIndex], pos, rotation); // 새 오브젝트 초기 설정
+        }
     }
 }
