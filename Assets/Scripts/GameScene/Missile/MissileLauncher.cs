@@ -30,7 +30,7 @@ public class MissileLauncher : MonoBehaviour
         }
     }
 
-    private bool HasTarget()
+    private bool HasTarget()    // 목표 확인
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, LayerMask.GetMask("EnemyLayer"));
 
