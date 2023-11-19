@@ -8,6 +8,8 @@ public class ScrollButtonHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
 {
     private ScrollRect ParentSR;// ScrollView의 Scroll Rect component를 담기 위함
     private bool activeSave=false;// 버튼을 채우는 오브젝트의 초기 활성화 여부
+    private int clickButtonNumber;
+    public const string stageNumber="stageNumber";
 
     void Start(){
         transform.Find("InnerImage").gameObject.SetActive(activeSave);// 버튼을 채우는 오브젝트 비활
@@ -31,15 +33,10 @@ public class ScrollButtonHandler : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     // 버튼을 클릭했을 때 이벤트
     public void StageClick(){
-        Debug.Log("click!!");
-        Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-        //해당 좌표에 있는 오브젝트 찾기
-        RaycastHit2D hit = Physics2D.Raycast (pos, Vector2.zero, 0f);
-        if (hit.collider != null){
-            GameObject click_obj=hit.transform.gameObject;
-            Debug.Log(click_obj.name);
-        }
-        //-1300,50
+        // 버튼 이름의 마지막 숫자를 clickButton에 저장한 후 hashmap에 저장, key는 stageNumber를 사용
+        clickButtonNumber=int.Parse(this.gameObject.name.Substring(this.gameObject.name.Length-1));
+        Debug.Log(clickButtonNumber);
+        PlayerPrefs.SetInt(stageNumber,clickButtonNumber);
     }
 
     // 버튼 hover in, hover out 이벤트 처리
