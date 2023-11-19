@@ -27,23 +27,12 @@ public class StageSceneManager : MonoBehaviour
             stageDetail.GetComponent<RectTransform>().anchoredPosition += new Vector2(force, 0f)*Time.deltaTime;
         }
     }
-
-    public void StageClick(){
-        Debug.Log("click!!");
-        Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-        //해당 좌표에 있는 오브젝트 찾기
-        RaycastHit2D hit = Physics2D.Raycast (pos, Vector2.zero, 0f);
-        if (hit.collider != null){
-            GameObject click_obj=hit.transform.gameObject;
-            Debug.Log(click_obj.name);
-        }
-        //-1300,50
-    }
     public void GoMainScene(){
         SceneManager.LoadScene("MainScene");
     }
     public void GoGameScene(){
         SceneManager.LoadScene("GameScene");
+        Debug.Log(PlayerPrefs.GetInt(ScrollButtonHandler.stageNumber));
     }
     public void GoSettingScene(){
         SceneManager.LoadScene("SettingScene");
