@@ -146,7 +146,7 @@ TextureImporter:
         width: 101
         height: 497
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -167,7 +167,7 @@ TextureImporter:
         width: 73
         height: 343
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -184,11 +184,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 158
+        y: 332
         width: 37
-        height: 197
+        height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -196,6 +196,27 @@ TextureImporter:
       bones: []
       spriteID: b0366c8c499fd184691b60ded60eb7fb
       internalID: 21300004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 2DShipsMissilesTorpedoesAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 158
+        width: 37
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db5191cdef00b4b188fae71829e9f415
+      internalID: -567559675
       vertices: []
       indices: 
       edges: []
@@ -214,6 +235,7 @@ TextureImporter:
       2DShipsMissilesTorpedoesAtlas_0: 21300000
       2DShipsMissilesTorpedoesAtlas_1: 21300002
       2DShipsMissilesTorpedoesAtlas_2: 21300004
+      2DShipsMissilesTorpedoesAtlas_3: -567559675
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
