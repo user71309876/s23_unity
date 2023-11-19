@@ -9,6 +9,7 @@ TagManager:
   - midEnemy
   - Boss
   - Missile
+  - Card
   layers:
   - Default
   - TransparentFX

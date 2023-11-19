@@ -27,7 +27,7 @@ public class LevelUpEvent : MonoBehaviour
     public RectTransform cardObejcts;   // Card 부모 오브젝트 위치
     public GameObject cardButtons;  // Card 부모 오브젝트
     
-    //private bool isGamePaused = false;  // 게임 멈췄는지 체크
+
 
 
     private void Awake()
