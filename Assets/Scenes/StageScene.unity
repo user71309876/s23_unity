@@ -647,7 +647,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (7)
+      value: Stage7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -749,7 +749,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (2)
+      value: Stage2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -1023,7 +1023,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (3)
+      value: Stage3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -1336,7 +1336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (4)
+      value: Stage4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -1547,7 +1547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (1)
+      value: Stage1
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916603, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: ParentSR
@@ -2082,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (6)
+      value: Stage6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -2581,7 +2581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (8)
+      value: Stage8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
@@ -2678,7 +2678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3485051924790916581, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
       propertyPath: m_Name
-      value: StageButton (5)
+      value: Stage5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b95afe46318c24e86aeb8282f6749ac0, type: 3}
