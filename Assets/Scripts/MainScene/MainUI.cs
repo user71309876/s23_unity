@@ -5,9 +5,9 @@ using UnityEngine;
 public enum BTNType
 {
     Start,
-    Setting,
-    Back,
-    Quit
+    Main,
+    Quit,
+    Retry
 }
 
 public class MainUI : MonoBehaviour

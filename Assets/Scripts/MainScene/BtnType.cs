@@ -22,11 +22,11 @@ public class BtnType : MonoBehaviour
                 Application.Quit();
                 Debug.Log("Á¾·á");
                 break;
-            case BTNType.Setting:
-                SceneManager.LoadScene("SettingScene");
-                break ;
-            case BTNType.Back:
+            case BTNType.Main:
                 SceneManager.LoadScene("MainScene");
+                break;
+            case BTNType.Retry:
+                SceneManager.LoadScene("GameScene");
                 break;
         }
     }
