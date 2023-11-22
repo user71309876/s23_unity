@@ -12,13 +12,11 @@ public class StageSceneManager : MonoBehaviour
     private float gravity=10f;
     private Vector2 stageDetailPos;
 
-    void Start()
-    {
+    void Start(){
         //stageDetail 오브젝트 저장
         stageDetail=GameObject.Find("StageDetail");
     }
 
-    // Update is called once per frame
     void Update()
     {
         stageDetailPos = stageDetail.GetComponent<RectTransform>().anchoredPosition;
@@ -36,15 +34,5 @@ public class StageSceneManager : MonoBehaviour
     }
     public void GoSettingScene(){
         SceneManager.LoadScene("SettingScene");
-    }
-    void OnDestroy(){
-        Debug.Log("OnDestroy");
-    }
-    void OnDisable(){
-        Debug.Log("OnDisable");
-    }
-
-    void OnApplicationQuit(){
-        Debug.Log("OnApplicationQuit");
     }
 }
