@@ -59,7 +59,7 @@ public class LevelUpEvent : MonoBehaviour
     }
 
     
-    public void GainExp()    // 경험치 얻었을 경우
+    public void GainExp()    // 경험치 얻음
     {
         currentExp += expInterval;
         UpdateExpText();
@@ -75,12 +75,7 @@ public class LevelUpEvent : MonoBehaviour
 
             targetProgress = 1.0f;  // 우선, 100%로 경험치 할당 => Update 함수에서 다음 할당량 처리
 
-            // 카드 오픈
             PauseGameAndOpenCard();
-            //if (!isGamePaused)
-            //{
-                
-            //}
         }
     }
 

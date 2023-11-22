@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class MoveTower : MonoBehaviour
@@ -5,10 +6,23 @@ public class MoveTower : MonoBehaviour
     private bool isDragging = false;
     private Vector3 offset;
     private Vector3 originalPosition; // 이동하기 전의 위치를 저장하기 위한 변수
+    private Color[] originalColors;
+    private float draggingAlpha = 0.5f;
+    private string targetTag = "Earth";
+    private Vector3 prevPosition; //
 
     void Start()
     {
         originalPosition = transform.position;
+        prevPosition = transform.position; //
+
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        originalColors = new Color[spriteRenderers.Length];
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            originalColors[i] = spriteRenderers[i].color;
+        }
     }
 
     void OnMouseDown()
@@ -16,6 +30,9 @@ public class MoveTower : MonoBehaviour
         // 마우스 클릭 시 타워 이동 시작
         isDragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        // 드래그 동안 투명하게 설정
+        SetObjectAlpha(draggingAlpha);
     }
 
     void OnMouseUp()
@@ -25,6 +42,9 @@ public class MoveTower : MonoBehaviour
 
         // 이동 후 위치가 특정 조건을 만족하는지 확인
         CheckMoveValidity();
+
+        // 드래그 종료 후 투명도 복구
+        SetObjectAlpha(1f);
     }
 
     void Update()
@@ -39,6 +59,20 @@ public class MoveTower : MonoBehaviour
             curPosition.z = transform.position.z;
 
             transform.position = curPosition;
+        }
+
+        LookAtTarget();
+    }
+
+    void LookAtTarget()
+    {
+        GameObject target = GameObject.FindGameObjectWithTag(targetTag);
+
+        if(target != null)
+        {
+            Vector3 relativePos = target.transform.position - transform.position;
+            float angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90f));
         }
     }
 
@@ -56,7 +90,8 @@ public class MoveTower : MonoBehaviour
                 // 이동 후 위치가 Tile의 범위와 같을 경우 이동 허용
                 isValidMove = true;
                 targetPosition = collider.bounds.center;
-                originalPosition = transform.position;
+                originalPosition = targetPosition;
+                Debug.Log("타일 만남");
                 break;
             }
         }
@@ -65,11 +100,23 @@ public class MoveTower : MonoBehaviour
         {
             // 이동 후 위치가 허용되면 타워를 해당 Tile의 중심 좌표로 이동
             transform.position = targetPosition;
-        }
+        }   
         else
         {
             // 이동 후 위치가 허용되지 않을 경우 이동하기 전의 위치로 되돌림
             transform.position = originalPosition;
+        }
+    }
+
+    void SetObjectAlpha(float alpha)
+    {
+        SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            Color currentColor = spriteRenderers[i].color;
+            currentColor.a = alpha;
+            spriteRenderers[i].color = currentColor;
         }
     }
 }
