@@ -10,6 +10,8 @@ TagManager:
   - Boss
   - Missile
   - Card
+  - Tile
+  - Tower
   layers:
   - Default
   - TransparentFX

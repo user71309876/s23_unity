@@ -8,37 +8,48 @@ public class CardController : MonoBehaviour
 {
     // 텍스트 옵션들
     private string[] textOptions = { "Add Tower", "Attack Power Up", "Attack Speed Up" };
+    private Button[] buttons;
+    private string[] buttonTexts;
 
     void Start()
     {
-        Button[] buttons = GetComponentsInChildren<Button>();
+        buttons = GetComponentsInChildren<Button>();
 
-        SetButtonTexts(buttons, "Add Tower");
+        SetInitialButtonText();
 
         foreach (Button button in buttons)
         {
-            button.onClick.AddListener(() => { ChangeButtonTexts(buttons); });
+            button.onClick.AddListener(() => { StartCoroutine(ChangeButtonTexts(button)); });
+        }
+    }
+
+    void SetInitialButtonText()
+    {
+        buttonTexts = new string[buttons.Length];
+        for(int i=0;i<buttons.Length; i++)
+        {
+            buttonTexts[i] = "Add Tower";
+            SetButtonText(buttons[i], buttonTexts[i]);
         }
     }
 
     // 버튼 텍스트 변경 메서드
-    void ChangeButtonTexts(Button[] buttons)
+    IEnumerator ChangeButtonTexts(Button button)
     {
+        yield return new WaitForSeconds(1f);
+
         // 랜덤으로 텍스트 선택
         string randomText = GetRandomText();
 
         // 선택된 텍스트로 버튼 텍스트 변경
-        SetButtonTexts(buttons, randomText);
+        SetButtonText(button, randomText);
     }
 
-    void SetButtonTexts(Button[] buttons, string newText)
+    void SetButtonText(Button button, string newText)
     {
-        foreach (Button button in buttons)
-        {
-            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
-            buttonText.text = newText;
-        }
+        buttonText.text = newText;
     }
 
     // 랜덤으로 텍스트 선택하는 메서드
