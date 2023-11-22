@@ -10,6 +10,7 @@ TagManager:
   - Boss
   - Missile
   - Card
+  - Earth
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - 
   - EnemyLayer
   - Missile
-  - 
+  - Earth
   - 
   - 
   - 
