@@ -19,7 +19,7 @@ public class EarthHP : MonoBehaviour
     {
         if (hp_splider.value <= 0)
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             gameOver();
         }
     }
@@ -29,7 +29,6 @@ public class EarthHP : MonoBehaviour
         {
             hp_splider.value--;
             Destroy(collision.gameObject);//인공위성 파괴
-
         }
     }
 
