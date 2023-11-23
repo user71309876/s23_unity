@@ -11,6 +11,7 @@ public class EarthHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1f;
         hp_splider.value = hp_splider.maxValue;
     }
 
@@ -19,7 +20,7 @@ public class EarthHP : MonoBehaviour
     {
         if (hp_splider.value <= 0)
         {
-            //Time.timeScale = 0f;
+            Time.timeScale = 0f;
             gameOver();
         }
     }

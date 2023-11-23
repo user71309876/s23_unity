@@ -7,8 +7,11 @@ public class BtnType : MonoBehaviour
 {
     public BTNType currentType;
     public static Scene currentScene;
-    
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
     public void OnBtnClick()
     {
         
@@ -23,9 +26,11 @@ public class BtnType : MonoBehaviour
                 Debug.Log("Á¾·á");
                 break;
             case BTNType.Main:
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("MainScene");
                 break;
             case BTNType.Retry:
+                Time.timeScale = 1f;
                 SceneManager.LoadScene("GameScene");
                 break;
         }
