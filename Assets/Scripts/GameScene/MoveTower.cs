@@ -9,12 +9,10 @@ public class MoveTower : MonoBehaviour
     private Color[] originalColors;
     private float draggingAlpha = 0.5f;
     private string targetTag = "Earth";
-    private Vector3 prevPosition; //
 
     void Start()
     {
         originalPosition = transform.position;
-        prevPosition = transform.position; //
 
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         originalColors = new Color[spriteRenderers.Length];

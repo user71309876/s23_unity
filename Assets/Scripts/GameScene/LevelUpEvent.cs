@@ -51,6 +51,8 @@ public class LevelUpEvent : MonoBehaviour
         card1Button.onClick.AddListener(RestartGameAndCloseCard);
         card2Button.onClick.AddListener(RestartGameAndCloseCard);
         card3Button.onClick.AddListener(RestartGameAndCloseCard);
+
+        PauseGameAndOpenCard(); // 게임 시작 시, 타워 배치
     }
 
     void UpdateExpText()    // ExpText의 text 내용 변경
