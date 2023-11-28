@@ -29,7 +29,7 @@ public class EnemyRotateRound : MonoBehaviour
             transform.RotateAround(center.position, Vector3.forward, rotation_speed * Time.deltaTime);  // 중심에서 원주 방향으로 회전 속도만큼 이동
             timer += Time.deltaTime;
 
-            if(timer >= 5f)//임시로 60초가 되면 적 인공위성들은 지구로 떨어지게
+            if(timer >= 60f)//임시로 60초가 되면 적 인공위성들은 지구로 떨어지게
             {
                 isRotating = false;
             }
