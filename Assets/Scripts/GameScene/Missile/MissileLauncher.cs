@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class MissileLauncher : MonoBehaviour
 {
-    [SerializeField] GameObject m_goMissile = null; // 미사일 프리팹 변수 선언
+    private GameObject m_goMissile = null; // 미사일 프리팹 변수 선언
+    [SerializeField] GameObject missilePrefabLowDamage = null;
+    [SerializeField] GameObject missilePrefabMediumDamage = null;
+    [SerializeField] GameObject missilePrefabHighDamage = null;
 
     [SerializeField] Transform m_tfMissileSpawn = null;//발사된 위치 변수 선언
 
@@ -17,12 +21,26 @@ public class MissileLauncher : MonoBehaviour
 
     private void Start()
     {
+        m_goMissile = missilePrefabLowDamage;
         StartCoroutine(MissileLaunch());
     }
 
     public void ApplyAttackPower()
     {
         currentDamage += powerUp;
+
+        if (currentDamage < 3f)
+        {
+            m_goMissile = missilePrefabLowDamage;
+        }
+        else if(currentDamage < 6f)
+        {
+            m_goMissile = missilePrefabMediumDamage;
+        }
+        else
+        {
+            m_goMissile = missilePrefabHighDamage;
+        }
     }
 
     public void ApplyAttckSpeed()
