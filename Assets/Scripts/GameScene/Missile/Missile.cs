@@ -14,6 +14,13 @@ public class Missile : MonoBehaviour
 
     GameObject level_event;
 
+    private float damage = 1f;
+
+    public void SetDamage(float newdamage)
+    {
+        damage = newdamage;
+    }
+
     void SearchEnemy()//표적 탐색 함수
     {
         //100미터 이내의 특정 콜라이더 검출
@@ -67,9 +74,19 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
-            Debug.Log("파괴");
+            ApplyDamageToEnemy(collision.gameObject);
             Destroy(gameObject);//미사일 파괴
             
+        }
+    }
+
+    void ApplyDamageToEnemy(GameObject enemy)
+    {
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+        if (enemyController != null)
+        {
+            enemyController.TakeDamage(damage);
         }
     }
 }

@@ -26,11 +26,53 @@ public class CardButtonManager : MonoBehaviour
         }
         else if (buttonText == "Attack Power Up")
         {
-            // Attack Power Up에 대한 처리
+            ApplyAttackPowerUp();
         }
         else if (buttonText == "Attack Speed Up")
         {
-            // Attack Speed Up에 대한 처리
+            ApplyAttackSpeedUp();
+        }
+    }
+
+    void ApplyAttackSpeedUp()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+
+        if (towers.Length == 0)
+        {
+            Debug.Log("적용할 타워가 없습니다 (ApplyAttackSpeedUp)");
+            return;
+        }
+
+        GameObject randomTower = towers[Random.Range(0, towers.Length)];
+
+        MissileLauncher missileLauncher = randomTower.GetComponent<MissileLauncher>();
+
+        if (missileLauncher != null)
+        {
+            missileLauncher.ApplyAttckSpeed();
+            Debug.Log("타워 공격속도 증가 적용 완료");
+        }
+    }
+
+    void ApplyAttackPowerUp()
+    {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+
+        if(towers.Length == 0)
+        {
+            Debug.Log("적용할 타워가 없습니다 (ApplyAttackPowerUp)");
+            return;
+        }
+
+        GameObject randomTower = towers[Random.Range(0, towers.Length)];
+        
+        MissileLauncher missileLauncher = randomTower.GetComponent<MissileLauncher>();
+
+        if(missileLauncher != null)
+        {
+            missileLauncher.ApplyAttackPower();
+            Debug.Log("타워 공격력 증가 적용 완료");
         }
     }
 

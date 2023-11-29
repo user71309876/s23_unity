@@ -36,12 +36,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage (float damage)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
-        {
-            hp_splider.value--;
-        }
+        hp_splider.value -= damage;
     }
 
     void SpawnObject()  // Àû ½ºÆù

@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: -4221831068731854034}
   m_Layer: 0
   m_Name: MissileLuncher_test
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_goMissile: {fileID: 4788016168958330271, guid: 16e45644ee50223479993974a85d9422, type: 3}
   m_tfMissileSpawn: {fileID: 4746228341948468883}
+  currentDamage: 1
 --- !u!61 &-4407944005926902450
 BoxCollider2D:
   m_ObjectHideFlags: 0
