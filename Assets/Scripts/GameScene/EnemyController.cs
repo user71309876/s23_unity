@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] Slider hp_splider;
+    public Slider hp_splider;
 
     Vector2 pos;//부서지기 전 위치 파악해서 그 보다 작은 적 객체 넣기 위한 변수
 
@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hp_splider.value = hp_splider.maxValue;
+        //hp_splider.value = hp_splider.maxValue;
         level_event = GameObject.Find("LevelUpEvent");
     }
 
@@ -36,12 +36,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void TakeDamage (float damage)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Missile"))
-        {
-            hp_splider.value--;
-        }
+        hp_splider.value -= damage;
     }
 
     void SpawnObject()  // 적 스폰

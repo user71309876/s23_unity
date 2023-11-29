@@ -209,9 +209,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3852074479464001745}
   - component: {fileID: 4146395771458779962}
+  - component: {fileID: -4407944005926902450}
+  - component: {fileID: -4221831068731854034}
   m_Layer: 0
   m_Name: MissileLuncher_test
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,8 +253,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a53b2f7e71454fae1e0623b17c4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_goMissile: {fileID: 4788016168958330271, guid: 16e45644ee50223479993974a85d9422, type: 3}
+  missilePrefabLowDamage: {fileID: 1388432215564494, guid: 5fb2a65a3c8ad414aad00d78ffb0604d, type: 3}
+  missilePrefabMediumDamage: {fileID: 1694848149411730, guid: 55ba744f2d9c38e45b19022d816e18a9, type: 3}
+  missilePrefabHighDamage: {fileID: 1098318907123292, guid: 90b7ac57480ecf543bd33e025cc4e9e3, type: 3}
   m_tfMissileSpawn: {fileID: 4746228341948468883}
+  currentDamage: 1
+  currentSpeed: 2
+--- !u!61 &-4407944005926902450
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852074479464001744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &-4221831068731854034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852074479464001744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e62981586ad394d42af40d6590b886b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6773638625797189407
 GameObject:
   m_ObjectHideFlags: 0
