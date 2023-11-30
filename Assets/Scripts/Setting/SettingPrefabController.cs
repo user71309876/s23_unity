@@ -15,7 +15,7 @@ public class SettingPrefabController : MonoBehaviour
     public RectTransform settingWindowObejcts;   // setting window position
 
     [Serializable]
-    public class Sound{
+    public struct Sound{
         public Slider Slider;
         public Button Icon;
         public Image XIcon;
@@ -30,8 +30,8 @@ public class SettingPrefabController : MonoBehaviour
         }
 
         // change volume when move slider
-        BGM.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeVolume);
-        SFX.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeVolume);
+        BGM.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeBGMVolume);
+        SFX.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeSFXVolume);
 
         // change volume when click music icons
         BGM.Icon.onClick.AddListener(() => ToggleButton(BGM));
@@ -51,10 +51,12 @@ public class SettingPrefabController : MonoBehaviour
     }
 
     public void OpenSettingWindow(){
+        SFXManager.instance.playSFXSound("SettingOpen");
         PauseGameAndOpenSettingWindow();
     }
 
     public void CloseSettingWindow(){
+        SFXManager.instance.playSFXSound("SettingClose");
         RestartGameAndCloseSettingWindow();
     }
 
@@ -95,11 +97,13 @@ public class SettingPrefabController : MonoBehaviour
 
     // set window screen mode 
     private void SetWindowScreen(){
+        SFXManager.instance.playSFXSound("Button");
         Screen.SetResolution(1920, 1080, false);
     }
 
     // set full screen mode
     private void SetFullScreen(){
+        SFXManager.instance.playSFXSound("Button");
         Screen.SetResolution(1920, 1080, true);
     }
 }
