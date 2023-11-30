@@ -1669,6 +1669,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 28.977
       objectReference: {fileID: 0}
+    - target: {fileID: 4146395771458779962, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
 --- !u!1 &584820151
@@ -1702,8 +1706,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemy: {fileID: 3753632884769756842, guid: 90b1d1406d9638444aeb303ddf21714f, type: 3}
   center: {fileID: 972443134}
-  minSpawnInterval: 1
-  maxSpawnInterval: 5
+  minSpawnInterval: 10
+  maxSpawnInterval: 10
+  baseHealth: 5
 --- !u!4 &584820153
 Transform:
   m_ObjectHideFlags: 0

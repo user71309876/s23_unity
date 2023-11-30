@@ -67,7 +67,7 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
-            Debug.Log("ÆÄ±«");
+            //Debug.Log("ÆÄ±«");
             Destroy(gameObject);//¹Ì»çÀÏ ÆÄ±«
             
         }

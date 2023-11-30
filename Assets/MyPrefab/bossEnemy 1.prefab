@@ -716,8 +716,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hp_splider: {fileID: 749982787635298181}
-  nextspawnEnemy:
-  - {fileID: 3776853291896093733, guid: 71918eddcd384dc418bab6daf92faf6b, type: 3}
+  aluminum: {fileID: 3752892028703932142}
+  aluminum2: {fileID: 3751869639538465346}
+  korpus: {fileID: 3752663094986037698}
+  solar_plane: {fileID: 3751793723575655142}
+  solar_plane2: {fileID: 3753480899531173626}
 --- !u!114 &5927734557372960317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,6 +741,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3748050848244857286}
     m_Modifications:
+    - target: {fileID: 3608701770039806054, guid: 46f459bbb2f49a94d8b3642f40b0ed3d, type: 3}
+      propertyPath: m_MaxValue
+      value: 999999
+      objectReference: {fileID: 0}
     - target: {fileID: 3919499636945221182, guid: 46f459bbb2f49a94d8b3642f40b0ed3d, type: 3}
       propertyPath: m_Name
       value: hp
