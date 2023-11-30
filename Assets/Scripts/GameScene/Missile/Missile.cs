@@ -4,22 +4,29 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    Rigidbody m_rigid = null;//¸®Áöµå¹Ùµð º¯¼ö
-    Transform m_tfTarget = null;//Ç¥Àû º¯¼ö
+    Rigidbody m_rigid = null;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½ï¿½ï¿½ï¿½
+    Transform m_tfTarget = null;//Ç¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    [SerializeField] float m_speed = 0f;//ÃÖ°í¼Óµµ
-    float m_currentSpeed = 0f;//ÇöÀç¼Óµµ
-    [SerializeField] LayerMask m_layerMask = 0;//¿øÇÏ´Â ·¹ÀÌ¾î°ËÃâÇÏ´Â ¸¶½ºÅ©
-    //[SerializeField] ParticleSystem m_psEffect = null;//ÆÄÆ¼Å¬ ½Ã½ºÅÛ º¯¼ö
+    [SerializeField] float m_speed = 0f;//ï¿½Ö°ï¿½ï¿½Óµï¿½
+    float m_currentSpeed = 0f;//ï¿½ï¿½ï¿½ï¿½Óµï¿½
+    [SerializeField] LayerMask m_layerMask = 0;//ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Å©
+    //[SerializeField] ParticleSystem m_psEffect = null;//ï¿½ï¿½Æ¼Å¬ ï¿½Ã½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     GameObject level_event;
 
-    void SearchEnemy()//Ç¥Àû Å½»ö ÇÔ¼ö
+    private float damage = 1f;
+
+    public void SetDamage(float newdamage)
     {
-        //100¹ÌÅÍ ÀÌ³»ÀÇ Æ¯Á¤ ÄÝ¶óÀÌ´õ °ËÃâ
+        damage = newdamage;
+    }
+
+    void SearchEnemy()//Ç¥ï¿½ï¿½ Å½ï¿½ï¿½ ï¿½Ô¼ï¿½
+    {
+        //100ï¿½ï¿½ï¿½ï¿½ ï¿½Ì³ï¿½ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½
         Collider[] t_cols = Physics.OverlapSphere(transform.position, 100f, m_layerMask);
 
-        //°ËÃâµÈ °ÍµéÁß ÇÏ³ª¸¦ ·£´ýÀ¸·Î Ç¥ÀûÀ¸·Î ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Íµï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (t_cols.Length > 0)
         {
             m_tfTarget = t_cols[Random.Range(0, t_cols.Length)].transform;
@@ -28,7 +35,7 @@ public class Missile : MonoBehaviour
 
     IEnumerator LaunchDelay()
     {
-        //¼Ó·ÂÀÌ 0º¸´Ù ¶³¾îÁö°Ô µÇ¸é 0.1ÃÊ ´ë±âÈÄ Ç¥Àû Å½»ö
+        //ï¿½Ó·ï¿½ï¿½ï¿½ 0ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¸ï¿½ 0.1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ Å½ï¿½ï¿½
         yield return new WaitUntil(() => m_rigid.velocity.y < 0f);
         yield return new WaitForSeconds(0.1f);
         SearchEnemy();
@@ -48,16 +55,16 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        if (m_tfTarget != null)//Ç¥ÀûÀÌ ÀÖÀ» °æ¿ì
+        if (m_tfTarget != null)//Ç¥ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
         {
-            //ÇöÀç ¼Óµµ°¡ ÃÖ°í¼Óµµº¸´Ù ´À¸®´Ù¸é °è¼Ó °¡¼Ó ½ÃÄÑÁÙ °Í
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             if (m_currentSpeed <= m_speed)
                 m_currentSpeed += m_speed * Time.deltaTime;
 
-            //¹Ì»çÀÏÀ» °¡¼Ó½ÃÅ³ °Í
+            //ï¿½Ì»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½ï¿½Å³ ï¿½ï¿½
             transform.position += transform.up * m_currentSpeed * Time.deltaTime;
 
-            //Ç¥ÀûÀ§Ä¡ - ¹Ì»çÀÏ À§Ä¡ => ¹æÇâ°ú °Å¸® °è»êÀÌÁö¸¸ °Å¸®´Â ÀÇ¹Ì¾ø¾î¼­ normalized·Î ¹æÇâ¸¸ °è»ê
+            //Ç¥ï¿½ï¿½ï¿½ï¿½Ä¡ - ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ => ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ç¹Ì¾ï¿½ï¿½î¼­ normalizedï¿½ï¿½ ï¿½ï¿½ï¿½â¸¸ ï¿½ï¿½ï¿½
             Vector3 t_dir = (m_tfTarget.position - transform.position).normalized;
             transform.up = Vector3.Lerp(transform.up, t_dir, 0.25f);
         }
@@ -67,9 +74,20 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
-            //Debug.Log("ÆÄ±«");
-            Destroy(gameObject);//¹Ì»çÀÏ ÆÄ±«
+            ApplyDamageToEnemy(collision.gameObject);
+            //Debug.Log("ï¿½Ä±ï¿½");
+            Destroy(gameObject);//ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
             
+        }
+    }
+
+    void ApplyDamageToEnemy(GameObject enemy)
+    {
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+
+        if (enemyController != null)
+        {
+            enemyController.TakeDamage(damage);
         }
     }
 }

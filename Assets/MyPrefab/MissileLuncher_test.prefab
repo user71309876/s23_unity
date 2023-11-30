@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601106243565072479}
   m_LocalRotation: {x: 0, y: -0, z: -0.32599455, w: 0.94537175}
-  m_LocalPosition: {x: 0.87, y: 1.43, z: 0}
+  m_LocalPosition: {x: 0.9, y: 1.74, z: 0}
   m_LocalScale: {x: 2.0898206, y: 2.0898206, z: 2.0898206}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: -4221831068731854034}
   m_Layer: 0
   m_Name: MissileLuncher_test
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 3852074479464001744}
   m_LocalRotation: {x: -0, y: -0, z: 0.32599455, w: 0.94537175}
   m_LocalPosition: {x: 2.56, y: -2.72, z: -3.12}
-  m_LocalScale: {x: 0.47851, y: 0.47851, z: 0.47851}
+  m_LocalScale: {x: 0.34204826, y: 0.34204826, z: 0.34204826}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5125840561680655572}
@@ -253,8 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a53b2f7e71454fae1e0623b17c4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_goMissile: {fileID: 4788016168958330271, guid: 16e45644ee50223479993974a85d9422, type: 3}
+  missilePrefabLowDamage: {fileID: 1388432215564494, guid: 3fa10f475c159524188d71779b6759c2, type: 3}
+  missilePrefabMediumDamage: {fileID: 1694848149411730, guid: 55ba744f2d9c38e45b19022d816e18a9, type: 3}
+  missilePrefabHighDamage: {fileID: 1098318907123292, guid: 90b7ac57480ecf543bd33e025cc4e9e3, type: 3}
   m_tfMissileSpawn: {fileID: 4746228341948468883}
+  currentDamage: 1
+  currentSpeed: 2
 --- !u!61 &-4407944005926902450
 BoxCollider2D:
   m_ObjectHideFlags: 0

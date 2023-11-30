@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     {
         nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
     }
-
+        
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +38,9 @@ public class Spawner : MonoBehaviour
     void SpawnObject()  // 적 스폰
     {
         Vector3 spawnPosition = new Vector3(0f, 2.5f, -2f); // 스폰 위치 설정
-        GameObject newObject = Instantiate(spawnEnemy, spawnPosition, Quaternion.identity); // 새 오브젝트 초기 설정
+        Quaternion spawnQuaternion = Quaternion.Euler(-30f, -5f, -25f); // 스폰 회전 설정
+
+        GameObject newObject = Instantiate(spawnEnemy, spawnPosition, spawnQuaternion); // 새 오브젝트 초기 설정
         newObject.GetComponent<EnemyRotateRound>().center = center; // 회전 중심 설정
         newObject.GetComponent<EnemyController>().SetHealth(baseHealth);
     }

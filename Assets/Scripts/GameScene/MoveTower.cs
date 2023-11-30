@@ -29,8 +29,11 @@ public class MoveTower : MonoBehaviour
         isDragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // 드래그 동안 투명하게 설정
+        // 드래그 동안 투명하게 설정(타워)
         SetObjectAlpha(draggingAlpha);
+
+        // 드래그 동안에 불투명하게 설정(타일)
+        SetTileAlpha(0.2f);
     }
 
     void OnMouseUp()
@@ -41,8 +44,11 @@ public class MoveTower : MonoBehaviour
         // 이동 후 위치가 특정 조건을 만족하는지 확인
         CheckMoveValidity();
 
-        // 드래그 종료 후 투명도 복구
+        // 드래그 종료 후 투명도 복구(타워)
         SetObjectAlpha(1f);
+
+        // 드래그 끝나면 투명하게 설정(타일)
+        SetTileAlpha(0f);
     }
 
     void Update()
@@ -115,6 +121,23 @@ public class MoveTower : MonoBehaviour
             Color currentColor = spriteRenderers[i].color;
             currentColor.a = alpha;
             spriteRenderers[i].color = currentColor;
+        }
+    }
+
+    void SetTileAlpha(float alpha)
+    {
+        GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
+
+        foreach(GameObject tile in tiles)
+        {
+            SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
+
+            if(tileRenderer != null)
+            {
+                Color currentColor = tileRenderer.color;
+                currentColor.a = alpha;
+                tileRenderer.color = currentColor;
+            }
         }
     }
 }
