@@ -17,27 +17,21 @@ public class BtnType : MonoBehaviour
         
         switch (currentType)
         {
-            case BTNType.Stage: //  Go to Stage Scene
-                SFXManager.instance.playSFXSound("Button");
-                SceneManager.LoadScene("StageScene");
+            case BTNType.Start:
+                SceneManager.LoadScene("StageScene");//스테이지 씬으로 이동
+                Debug.Log("게임 시작");
                 break;
-            case BTNType.Quit: // exit the game
-                SFXManager.instance.playSFXSound("Button");
+            case BTNType.Quit:
                 Application.Quit();
+                Debug.Log("종료");
                 break;
-            case BTNType.Main: // go to Main Scene
-                SFXManager.instance.playSFXSound("Button");
+            case BTNType.Main:
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("MainScene");
                 break;
-            case BTNType.Game: // go to Game Scene
-                SFXManager.instance.playSFXSound("Button");
+            case BTNType.Retry:
                 Time.timeScale = 1f;
                 SceneManager.LoadScene("GameScene");
-                break;
-            case BTNType.Setting: // Open Setting window
-                SFXManager.instance.playSFXSound("Button");
-                SettingPrefabController.instance.OpenSettingWindow();
                 break;
         }
     }

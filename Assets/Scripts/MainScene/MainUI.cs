@@ -4,11 +4,10 @@ using UnityEngine;
 
 public enum BTNType
 {
-    Stage,
+    Start,
     Main,
     Quit,
-    Game,
-    Setting
+    Retry
 }
 
 public class MainUI : MonoBehaviour
