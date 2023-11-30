@@ -1473,6 +1473,87 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562819221}
   m_CullTransparentMesh: 1
+--- !u!1001 &564292447
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3852074478210468955, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074478210468955, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4669811
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074478210468955, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074478210468955, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6938059
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001744, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Name
+      value: MissileLuncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001744, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_TagString
+      value: Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.968199
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.25018132
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3852074479464001745, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 28.977
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146395771458779962, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 773cf8835e2ba0b4d94abe31be972e27, type: 3}
 --- !u!1 &584820151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1504,8 +1585,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemy: {fileID: 3753632884769756842, guid: 90b1d1406d9638444aeb303ddf21714f, type: 3}
   center: {fileID: 972443134}
-  minSpawnInterval: 1
-  maxSpawnInterval: 5
+  minSpawnInterval: 10
+  maxSpawnInterval: 10
+  baseHealth: 5
 --- !u!4 &584820153
 Transform:
   m_ObjectHideFlags: 0
