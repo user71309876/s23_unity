@@ -74,5 +74,6 @@ public class EnemyController : MonoBehaviour
     public void SetHealth(float newHealth)
     {
         hp_splider.maxValue = newHealth;
+        hp_splider.value = hp_splider.maxValue;
     }
 }

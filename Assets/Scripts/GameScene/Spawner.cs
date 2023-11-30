@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour
 
     private float nextSpawnTime;    // 다음 스폰 시간
 
-    public float baseHealth = 10f; // 초기 체력, 유니티 내에서 설정하는게 더 편함 고로 이건 무시
+    public float baseHealth = 10f; // 초기 체력
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
         {
             SpawnObject();  // 오브젝트 스폰
             nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
-            baseHealth += 1f;//체력이 늘어나는 크기
+            baseHealth += 3f;
         }
     }
 
