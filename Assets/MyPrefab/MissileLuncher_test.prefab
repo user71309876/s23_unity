@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70a53b2f7e71454fae1e0623b17c4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missilePrefabLowDamage: {fileID: 1388432215564494, guid: 5fb2a65a3c8ad414aad00d78ffb0604d, type: 3}
+  missilePrefabLowDamage: {fileID: 1388432215564494, guid: 3fa10f475c159524188d71779b6759c2, type: 3}
   missilePrefabMediumDamage: {fileID: 1694848149411730, guid: 55ba744f2d9c38e45b19022d816e18a9, type: 3}
   missilePrefabHighDamage: {fileID: 1098318907123292, guid: 90b7ac57480ecf543bd33e025cc4e9e3, type: 3}
   m_tfMissileSpawn: {fileID: 4746228341948468883}

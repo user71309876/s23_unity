@@ -10,11 +10,15 @@ public class LevelUpEvent : MonoBehaviour
 {
     public TMP_Text expText;    // 경험치 텍스트
     public TMP_Text levelText;  // 레벨 텍스트
+    public TMP_Text scoreText;
+    public TMP_Text gameOverText;
 
     private float expInterval = 15f;   // 경험치 할당량
     private float currentExp = 0; // 현재 경험치
     private float maxExp = 100f;   // 최대 경험치
     private float currentlevel = 1f;   // 현재 레벨
+
+    private float currentScore = 0f;
 
     
     private Slider expslider;   // 경험치 슬라이더
@@ -68,6 +72,8 @@ public class LevelUpEvent : MonoBehaviour
 
         targetProgress = currentExp * 0.01f;    // 경험치량을 정규화(0 ~ 1 사이 값)
 
+        currentScore += 50f;
+
         if (currentExp >= maxExp) // 레벨업
         {
             currentExp -= maxExp;
@@ -77,8 +83,13 @@ public class LevelUpEvent : MonoBehaviour
 
             targetProgress = 1.0f;  // 우선, 100%로 경험치 할당 => Update 함수에서 다음 할당량 처리
 
+            currentScore += 1000f;
+
             PauseGameAndOpenCard();
         }
+
+        scoreText.text = "Score   " + currentScore;
+        gameOverText.text = "Score   " + currentScore;
     }
 
     private void Update()

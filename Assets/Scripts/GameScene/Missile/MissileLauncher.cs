@@ -57,10 +57,40 @@ public class MissileLauncher : MonoBehaviour
                 //미사일 생성
                 GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, Quaternion.identity);
 
+                // FlameParticle 파티클에 접근
+                ParticleSystem flameParticle = t_missile.GetComponentInChildren<ParticleSystem>();
+                if (flameParticle != null)
+                {
+                    var mainModule = flameParticle.main;
+
+                    if (currentSpeed < 1.0f)
+                    {
+                        mainModule.startColor = new ParticleSystem.MinMaxGradient(
+                            new Color(0f / 255f, 247f / 255f, 250f / 255f, 158f / 255f),
+                            new Color(0f / 255f, 0f / 255f, 0f, 143f / 255f)
+                        );
+                    }
+                    else if (currentSpeed < 1.5f)
+                    {
+                        mainModule.startColor = new ParticleSystem.MinMaxGradient(
+                            new Color(234f / 255f, 0f / 255f, 250f / 255f, 158f / 255f),
+                            new Color(255f / 255f, 255f / 255f, 255f, 143f / 255f)
+                        );
+                    }
+                    else if (currentSpeed < 2.0f)
+                    {
+                        // Start Color 속성을 변경 (Random Between Two Colors로 설정된 경우)
+                        mainModule.startColor = new ParticleSystem.MinMaxGradient(
+                            new Color(255f / 255f, 204f / 255f, 13f / 255f, 158f / 255f),
+                            new Color(255f / 255f, 109f / 255f, 0f, 143f / 255f)
+                        );
+                    }
+                }
+
                 t_missile.GetComponent<Missile>().SetDamage(currentDamage);
 
                 //위로 퉁날림
-                t_missile.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
+                //t_missile.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
             }
             
 
