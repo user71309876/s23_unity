@@ -52,14 +52,10 @@ public class MissileLauncher : MonoBehaviour
     {
         while (true)
         {
-            GameObject earthObject = GameObject.FindGameObjectWithTag("Earth");
-
             if(HasTarget())
             {
-                // 타워가 바라보는 방향으로 설정
-                Quaternion rotationtoEarth = Quaternion.LookRotation(earthObject.transform.position - m_tfMissileSpawn.position);
                 //미사일 생성
-                GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, rotationtoEarth * Quaternion.Euler(90, 0, 0));
+                GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, Quaternion.identity);
 
                 // FlameParticle 파티클에 접근
                 ParticleSystem flameParticle = t_missile.GetComponentInChildren<ParticleSystem>();
@@ -93,9 +89,8 @@ public class MissileLauncher : MonoBehaviour
 
                 t_missile.GetComponent<Missile>().SetDamage(currentDamage);
 
-
                 //위로 퉁날림
-                //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
+                //t_missile.GetComponent<Rigidbody>().velocity = Vector3.up * 5f;
             }
             
 

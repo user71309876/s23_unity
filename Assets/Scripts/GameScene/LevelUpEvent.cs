@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class LevelUpEvent : MonoBehaviour
 {
@@ -25,12 +24,13 @@ public class LevelUpEvent : MonoBehaviour
     private Slider expslider;   // 경험치 슬라이더
 
     private float targetProgress = 0;   // 목표치
-    private float fillSpeed = 2.0f;  // 경험치 애니메이션 속도
+    private float fillSpeed = 3.0f;  // 경험치 애니메이션 속도
 
     public GameObject darkPanel;    // 어두운 화면
 
     public RectTransform cardObejcts;   // Card 부모 오브젝트 위치
     public GameObject cardButtons;  // Card 부모 오브젝트
+    
 
 
 
@@ -57,13 +57,11 @@ public class LevelUpEvent : MonoBehaviour
         card3Button.onClick.AddListener(RestartGameAndCloseCard);
 
         PauseGameAndOpenCard(); // 게임 시작 시, 타워 배치
-
-        expslider.value -= 0.04f;
     }
 
     void UpdateExpText()    // ExpText의 text 내용 변경
     {
-        expText.text = currentExp + " / " + maxExp;
+        expText.text = "Exp(" + currentExp + " / " + maxExp + ")";
     }
 
     
@@ -81,7 +79,7 @@ public class LevelUpEvent : MonoBehaviour
             currentExp -= maxExp;
             UpdateExpText();
             currentlevel++;
-            levelText.text = currentlevel.ToString();
+            levelText.text = "Lv. " + currentlevel;
 
             targetProgress = 1.0f;  // 우선, 100%로 경험치 할당 => Update 함수에서 다음 할당량 처리
 
@@ -90,8 +88,8 @@ public class LevelUpEvent : MonoBehaviour
             PauseGameAndOpenCard();
         }
 
-        scoreText.text = currentScore.ToString();
-        gameOverText.text = currentScore.ToString();
+        scoreText.text = "Score   " + currentScore;
+        gameOverText.text = "Score   " + currentScore;
     }
 
     private void Update()
@@ -104,7 +102,6 @@ public class LevelUpEvent : MonoBehaviour
         if(expslider.value <= targetProgress)
         {
             expslider.value += fillSpeed * Time.deltaTime;
-
             if (expslider.value == 1.0f)    // 슬라이더 값이 100% 채웠을 때
             {
                 targetProgress = currentExp * 0.01f;    // 목표치 재할당
