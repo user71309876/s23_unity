@@ -16,9 +16,10 @@ public class SettingPrefabController : MonoBehaviour
 
     [Serializable]
     public struct Sound{
-        public Slider Slider;
-        public Button Icon;
-        public Image XIcon;
+        public Slider Slider; // volume slider
+        public Button Icon; // a icon to the left of the slider
+        public Image XIcon; // a icon similar in shape to an 'X'
+        [HideInInspector] public string key; // hash key
     }
     [SerializeField] Sound BGM;
     [SerializeField] Sound SFX;
@@ -29,21 +30,48 @@ public class SettingPrefabController : MonoBehaviour
             SettingPrefabController.instance = this;
         }
 
+        //set key of sound volume value(use hashkey)
+        BGM.key="BGMVolume";
+        SFX.key="SFXVolume";
+
         // change volume when move slider
-        BGM.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeBGMVolume);
-        SFX.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeSFXVolume);
+        // BGM.Slider.onValueChanged.AddListener(SoundManager.instance.ChangeBGMVolume);
+        BGM.Slider.onValueChanged.AddListener(ChangeBGMVolume);
+        SFX.Slider.onValueChanged.AddListener(ChangeSFXVolume);
+
+        // get last saved value
+        BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
+        SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
 
         // change volume when click music icons
         BGM.Icon.onClick.AddListener(() => ToggleButton(BGM));
         SFX.Icon.onClick.AddListener(() => ToggleButton(SFX));
     }
 
+    // change BGM Volume
+    private void ChangeBGMVolume(float volume){
+        if(BGM.XIcon.enabled!=true){
+            PlayerPrefs.SetFloat(BGM.key, volume);
+        }
+        SoundManager.instance.ChangeBGMVolume(volume);
+    }
+
+    // change SFX Volume
+    private void ChangeSFXVolume(float volume){
+        if(SFX.XIcon.enabled!=true){
+            PlayerPrefs.SetFloat(SFX.key, volume);
+        }
+        SoundManager.instance.ChangeSFXVolume(volume);
+    }
+
     // sound on/off switch
     public void ToggleButton(Sound sound){
+        // when Volume is 0%
         if(sound.Slider.value==0.0001f){
             sound.XIcon.enabled=false;
-            sound.Slider.value=1f;
+            sound.Slider.value=PlayerPrefs.GetFloat(sound.key);
         }
+        //when Volume is not 0%
         else{
             sound.XIcon.enabled=true;
             sound.Slider.value=0.0001f;

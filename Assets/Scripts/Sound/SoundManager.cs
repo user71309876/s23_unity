@@ -37,4 +37,6 @@ public class SoundManager : MonoBehaviour
 게임 오브젝트에 audio source를 만듬
 그리고 output을 audio mixer의 SFX에게 보냄
 SoundManager에서 받은 후 SettingPrefabController에서 컨트롤
+
+//Todo : datamanager, 타워,미사일 효과음
 */
