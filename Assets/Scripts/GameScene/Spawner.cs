@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
         {
             SpawnObject();  // 오브젝트 스폰
             nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
-            baseHealth += 1f;//체력이 늘어나는 크기
+            baseHealth += 0.1f;//체력이 늘어나는 크기
         }
     }
 
