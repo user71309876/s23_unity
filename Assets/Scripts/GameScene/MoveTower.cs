@@ -5,10 +5,12 @@ public class MoveTower : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
-    private Vector3 originalPosition; // ÀÌµ¿ÇÏ±â ÀüÀÇ À§Ä¡¸¦ ÀúÀåÇÏ±â À§ÇÑ º¯¼ö
+    private Vector3 originalPosition; // ï¿½Ìµï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     private Color[] originalColors;
     private float draggingAlpha = 0.5f;
     private string targetTag = "Earth";
+
+    GameObject towerPlacement = null;
 
     void Start()
     {
@@ -21,33 +23,37 @@ public class MoveTower : MonoBehaviour
         {
             originalColors[i] = spriteRenderers[i].color;
         }
+
+        towerPlacement = GameObject.Find("TowerPlacement");
     }
 
     void OnMouseDown()
     {
-        // ¸¶¿ì½º Å¬¸¯ ½Ã Å¸¿ö ÀÌµ¿ ½ÃÀÛ
+        SFXManager.instance.playSFXSound("TowerDown");
+        // ï¿½ï¿½ï¿½ì½º Å¬ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         isDragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // µå·¡±× µ¿¾È Åõ¸íÇÏ°Ô ¼³Á¤(Å¸¿ö)
+        // ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)
         SetObjectAlpha(draggingAlpha);
 
-        // µå·¡±× µ¿¾È¿¡ ºÒÅõ¸íÇÏ°Ô ¼³Á¤(Å¸ÀÏ)
-        SetTileAlpha(0.2f);
+        // ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½È¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)
+        SetTileAlpha(0.05f);
     }
 
     void OnMouseUp()
     {
-        // ¸¶¿ì½º ¶¿ ½Ã Å¸¿ö ÀÌµ¿ Á¾·á
+        SFXManager.instance.playSFXSound("TowerUp");
+        // ï¿½ï¿½ï¿½ì½º ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½
         isDragging = false;
 
-        // ÀÌµ¿ ÈÄ À§Ä¡°¡ Æ¯Á¤ Á¶°ÇÀ» ¸¸Á·ÇÏ´ÂÁö È®ÀÎ
+        // ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         CheckMoveValidity();
 
-        // µå·¡±× Á¾·á ÈÄ Åõ¸íµµ º¹±¸(Å¸¿ö)
+        // ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)
         SetObjectAlpha(1f);
 
-        // µå·¡±× ³¡³ª¸é Åõ¸íÇÏ°Ô ¼³Á¤(Å¸ÀÏ)
+        // ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½(Å¸ï¿½ï¿½)
         SetTileAlpha(0f);
     }
 
@@ -55,11 +61,11 @@ public class MoveTower : MonoBehaviour
     {
         if (isDragging)
         {
-            // ¸¶¿ì½º µå·¡±× ½Ã Å¸¿ö À§Ä¡ ¾÷µ¥ÀÌÆ®
+            // ï¿½ï¿½ï¿½ì½º ï¿½å·¡ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
             Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
-            // z Ãà À§Ä¡¸¦ ÀÌµ¿ÇÏ±â ÀüÀÇ À§Ä¡·Î °íÁ¤
+            // z ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             curPosition.z = transform.position.z;
 
             transform.position = curPosition;
@@ -68,7 +74,7 @@ public class MoveTower : MonoBehaviour
         LookAtTarget();
     }
 
-    void LookAtTarget()
+    void LookAtTarget() // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
 
@@ -82,7 +88,7 @@ public class MoveTower : MonoBehaviour
 
     void CheckMoveValidity()
     {
-        // ÀÌµ¿ ÈÄ À§Ä¡°¡ Æ¯Á¤ Á¶°ÇÀ» ¸¸Á·ÇÏ´ÂÁö È®ÀÎ
+        // ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ È®ï¿½ï¿½
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0);
         bool isValidMove = false;
         Vector3 targetPosition = originalPosition;
@@ -91,28 +97,30 @@ public class MoveTower : MonoBehaviour
         {
             if (collider.CompareTag("Tile"))
             {
-                // ÀÌµ¿ ÈÄ À§Ä¡°¡ TileÀÇ ¹üÀ§¿Í °°À» °æ¿ì ÀÌµ¿ Çã¿ë
+                // ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ Tileï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½ï¿½ï¿½
                 isValidMove = true;
                 targetPosition = collider.bounds.center;
                 originalPosition = targetPosition;
-                Debug.Log("Å¸ÀÏ ¸¸³²");
+                Debug.Log("Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 break;
             }
         }
 
         if (isValidMove)
         {
-            // ÀÌµ¿ ÈÄ À§Ä¡°¡ Çã¿ëµÇ¸é Å¸¿ö¸¦ ÇØ´ç TileÀÇ Áß½É ÁÂÇ¥·Î ÀÌµ¿
+            // ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½Ç¸ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ Tileï¿½ï¿½ ï¿½ß½ï¿½ ï¿½ï¿½Ç¥ï¿½ï¿½ ï¿½Ìµï¿½
             transform.position = targetPosition;
+
+            towerPlacement.GetComponent<TowerPlacementManager>().UpdateTowerStatus();
         }   
         else
         {
-            // ÀÌµ¿ ÈÄ À§Ä¡°¡ Çã¿ëµÇÁö ¾ÊÀ» °æ¿ì ÀÌµ¿ÇÏ±â ÀüÀÇ À§Ä¡·Î µÇµ¹¸²
+            // ï¿½Ìµï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Çµï¿½ï¿½ï¿½
             transform.position = originalPosition;
         }
     }
 
-    void SetObjectAlpha(float alpha)
+    void SetObjectAlpha(float alpha)    // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
@@ -124,7 +132,7 @@ public class MoveTower : MonoBehaviour
         }
     }
 
-    void SetTileAlpha(float alpha)
+    void SetTileAlpha(float alpha)  // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 

@@ -32,6 +32,7 @@ public class CardButtonManager : MonoBehaviour
         {
             ApplyAttackSpeedUp();
         }
+        SFXManager.instance.playSFXSound("Button");
     }
 
     void ApplyAttackSpeedUp()
@@ -40,7 +41,7 @@ public class CardButtonManager : MonoBehaviour
 
         if (towers.Length == 0)
         {
-            Debug.Log("Àû¿ëÇÒ Å¸¿ö°¡ ¾ø½À´Ï´Ù (ApplyAttackSpeedUp)");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ (ApplyAttackSpeedUp)");
             return;
         }
 
@@ -51,7 +52,7 @@ public class CardButtonManager : MonoBehaviour
         if (missileLauncher != null)
         {
             missileLauncher.ApplyAttckSpeed();
-            Debug.Log("Å¸¿ö °ø°Ý¼Óµµ Áõ°¡ Àû¿ë ¿Ï·á");
+            Debug.Log("Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¼Óµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
         }
     }
 
@@ -61,7 +62,7 @@ public class CardButtonManager : MonoBehaviour
 
         if(towers.Length == 0)
         {
-            Debug.Log("Àû¿ëÇÒ Å¸¿ö°¡ ¾ø½À´Ï´Ù (ApplyAttackPowerUp)");
+            Debug.Log("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ (ApplyAttackPowerUp)");
             return;
         }
 
@@ -72,7 +73,7 @@ public class CardButtonManager : MonoBehaviour
         if(missileLauncher != null)
         {
             missileLauncher.ApplyAttackPower();
-            Debug.Log("Å¸¿ö °ø°Ý·Â Áõ°¡ Àû¿ë ¿Ï·á");
+            Debug.Log("Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·ï¿½");
         }
     }
 
@@ -80,48 +81,48 @@ public class CardButtonManager : MonoBehaviour
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
-        // ºó Å¸ÀÏÀ» ÀúÀåÇÒ ¸®½ºÆ®
+        // ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®
         var emptyTiles = new List<GameObject>();
 
         foreach (var tile in tiles)
         {
-            // Å¸ÀÏ À§¿¡ ´Ù¸¥ ¿ÀºêÁ§Æ®°¡ ¾øÀ¸¸é ºó Å¸ÀÏ ¸®½ºÆ®¿¡ Ãß°¡
+            // Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ß°ï¿½
             if (!HasObjectOnTile(tile))
             {
                 emptyTiles.Add(tile);
             }
         }
 
-        // ºó Å¸ÀÏÀÌ ¾øÀ¸¸é ÇÔ¼ö Á¾·á
+        // ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (emptyTiles.Count == 0)
         {
             Debug.Log("No empty tiles available.");
             return;
         }
 
-        // ºó Å¸ÀÏ Áß ·£´ýÀ¸·Î ¼±ÅÃ
+        // ï¿½ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameObject randomTile = emptyTiles[Random.Range(0, emptyTiles.Count)];
 
-        // Å¸¿ö¸¦ ·£´ýÀ¸·Î ¼±ÅÃµÈ Å¸ÀÏÀÇ À§Ä¡¿¡ »ý¼º
+        // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ãµï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Instantiate(towerPrefab, randomTile.transform.position, Quaternion.identity);
-        Debug.Log("Å¸¿ö ¹èÄ¡ ¿Ï·á");
+        Debug.Log("Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ï·ï¿½");
     }
 
-    bool HasObjectOnTile(GameObject tile)   // ¼öÁ¤ ÇÊ¿ä##############
+    bool HasObjectOnTile(GameObject tile)   // ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½##############
     {
-        // ÇØ´ç Å¸ÀÏ À§¿¡ ´Ù¸¥ ¿ÀºêÁ§Æ®°¡ ÀÖ´ÂÁö Ã¼Å©
+        // ï¿½Ø´ï¿½ Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Ã¼Å©
         Collider2D[] colliders = Physics2D.OverlapCircleAll(tile.transform.position, tile.GetComponent<CircleCollider2D>().radius, 0);
 
         foreach (var collider in colliders)
         {
             if (collider.gameObject != tile)
             {
-                // ´Ù¸¥ ¿ÀºêÁ§Æ®°¡ ÀÖ´Â °æ¿ì true ¹ÝÈ¯
+                // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ true ï¿½ï¿½È¯
                 return true;
             }
         }
 
-        // ´Ù¸¥ ¿ÀºêÁ§Æ®°¡ ¾ø´Â °æ¿ì false ¹ÝÈ¯
+        // ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ false ï¿½ï¿½È¯
         return false;
     }
 }

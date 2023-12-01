@@ -7,9 +7,12 @@ using UnityEngine.UI;
 public class CardController : MonoBehaviour
 {
     // 텍스트 옵션들
-    private string[] textOptions = { "Add Tower", "Attack Power Up", "Attack Speed Up" };
+    private string[] textOptions1 = { "Add Tower", "Attack Power Up", "Attack Speed Up" };
+    private string[] textOptions2 = { "Attack Power Up", "Attack Speed Up" };
     private Button[] buttons;
     private string[] buttonTexts;
+
+    GameObject towerPlacement = null;
 
     void Start()
     {
@@ -21,6 +24,8 @@ public class CardController : MonoBehaviour
         {
             button.onClick.AddListener(() => { StartCoroutine(ChangeButtonTexts(button)); });
         }
+
+        towerPlacement = GameObject.Find("TowerPlacement");
     }
 
     void SetInitialButtonText()
@@ -55,7 +60,15 @@ public class CardController : MonoBehaviour
     // 랜덤으로 텍스트 선택하는 메서드
     string GetRandomText()
     {
-        int randomIndex = Random.Range(0, textOptions.Length);
-        return textOptions[randomIndex];
+        if(!towerPlacement.GetComponent<TowerPlacementManager>().IsPlacedTowerCountExceedsLimit())
+        {
+            int randomIndex = Random.Range(0, textOptions1.Length);
+            return textOptions1[randomIndex];
+        }
+        else
+        {
+            int randomIndex = Random.Range(0, textOptions2.Length);
+            return textOptions2[randomIndex];
+        }
     }
 }

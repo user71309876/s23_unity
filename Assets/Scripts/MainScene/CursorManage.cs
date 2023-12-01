@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class CursorManage : MonoBehaviour
 {
-    [SerializeField] Texture2D cursorImage; // ¸¶¿ì½º Ä¿¼­ ÀÌ¹ÌÁö¸¦ ¿©±â¿¡ ÇÒ´çÇÕ´Ï´Ù.
+    [SerializeField] Texture2D cursorImage; // ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½â¿¡ ï¿½Ò´ï¿½ï¿½Õ´Ï´ï¿½.
     // Start is called before the first frame update
+
+    
+    void Reset(){
+        // set fullscreen when starting game
+        Screen.SetResolution(1920, 1080, true);
+    }
     void Start()
     {
-        // ¸¶¿ì½º Ä¿¼­ ÀÌ¹ÌÁö¸¦ ¼³Á¤ÇÕ´Ï´Ù.
+        // Screen.SetResolution(1920, 1080, true);
+        // ï¿½ï¿½ï¿½ì½º Ä¿ï¿½ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
         Cursor.SetCursor(cursorImage, Vector2.zero, CursorMode.ForceSoftware);
     }
 

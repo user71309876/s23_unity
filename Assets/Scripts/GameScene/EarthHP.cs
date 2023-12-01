@@ -40,7 +40,7 @@ public class EarthHP : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
             targetEarthHP--;
-            Destroy(collision.gameObject);//ÀÎ°øÀ§¼º ÆÄ±«
+            Destroy(collision.gameObject);//ï¿½Î°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä±ï¿½
         }
     }
 

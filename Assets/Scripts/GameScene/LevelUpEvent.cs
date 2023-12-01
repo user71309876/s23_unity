@@ -9,28 +9,28 @@ using Unity.VisualScripting;
 
 public class LevelUpEvent : MonoBehaviour
 {
-    public TMP_Text expText;    // °æÇèÄ¡ ÅØ½ºÆ®
-    public TMP_Text levelText;  // ·¹º§ ÅØ½ºÆ®
+    public TMP_Text expText;    // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ø½ï¿½Æ®
+    public TMP_Text levelText;  // ï¿½ï¿½ï¿½ï¿½ ï¿½Ø½ï¿½Æ®
     public TMP_Text scoreText;
     public TMP_Text gameOverText;
 
-    private float expInterval = 15f;   // °æÇèÄ¡ ÇÒ´ç·®
-    private float currentExp = 0; // ÇöÀç °æÇèÄ¡
-    private float maxExp = 100f;   // ÃÖ´ë °æÇèÄ¡
-    private float currentlevel = 1f;   // ÇöÀç ·¹º§
+    private float expInterval = 15f;   // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ò´ç·®
+    private float currentExp = 0; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
+    private float maxExp = 100f;   // ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡
+    private float currentlevel = 1f;   // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     private float currentScore = 0f;
 
     
-    private Slider expslider;   // °æÇèÄ¡ ½½¶óÀÌ´õ
+    private Slider expslider;   // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½
 
-    private float targetProgress = 0;   // ¸ñÇ¥Ä¡
-    private float fillSpeed = 2.0f;  // °æÇèÄ¡ ¾Ö´Ï¸ÞÀÌ¼Ç ¼Óµµ
+    private float targetProgress = 0;   // ï¿½ï¿½Ç¥Ä¡
+    private float fillSpeed = 2.0f;  // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½Óµï¿½
 
-    public GameObject darkPanel;    // ¾îµÎ¿î È­¸é
+    public GameObject darkPanel;    // ï¿½ï¿½Î¿ï¿½ È­ï¿½ï¿½
 
-    public RectTransform cardObejcts;   // Card ºÎ¸ð ¿ÀºêÁ§Æ® À§Ä¡
-    public GameObject cardButtons;  // Card ºÎ¸ð ¿ÀºêÁ§Æ®
+    public RectTransform cardObejcts;   // Card ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½Ä¡
+    public GameObject cardButtons;  // Card ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
 
 
@@ -41,13 +41,13 @@ public class LevelUpEvent : MonoBehaviour
 
     private void Start()
     {
-        // °æÇèÄ¡ ÃÊ±â ¼³Á¤
+        // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
         UpdateExpText();
 
-        // Ä«µå ÃÊ±â À§Ä¡ ¼³Á¤
+        // Ä«ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
         CardMove(new Vector3(0, 500, -10));
 
-        // °¢°¢ÀÇ Ä«µå Áß ÇÏ³ª¸¦ ¼±ÅÃÇÒ °æ¿ì, °ÔÀÓ Àç½ÃÀÛ, Ä«µå ´Ý±â
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, Ä«ï¿½ï¿½ ï¿½Ý±ï¿½
         Button card1Button = cardButtons.transform.Find("Card1").GetComponent<Button>();
         Button card2Button = cardButtons.transform.Find("Card2").GetComponent<Button>();
         Button card3Button = cardButtons.transform.Find("Card3").GetComponent<Button>();
@@ -56,34 +56,34 @@ public class LevelUpEvent : MonoBehaviour
         card2Button.onClick.AddListener(RestartGameAndCloseCard);
         card3Button.onClick.AddListener(RestartGameAndCloseCard);
 
-        PauseGameAndOpenCard(); // °ÔÀÓ ½ÃÀÛ ½Ã, Å¸¿ö ¹èÄ¡
+        PauseGameAndOpenCard(); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½, Å¸ï¿½ï¿½ ï¿½ï¿½Ä¡
 
         expslider.value -= 0.04f;
     }
 
-    void UpdateExpText()    // ExpTextÀÇ text ³»¿ë º¯°æ
+    void UpdateExpText()    // ExpTextï¿½ï¿½ text ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
         expText.text = currentExp + " / " + maxExp;
     }
 
     
-    public void GainExp()    // °æÇèÄ¡ ¾òÀ½
+    public void GainExp()    // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½
     {
         currentExp += expInterval;
         UpdateExpText();
 
-        targetProgress = currentExp * 0.01f;    // °æÇèÄ¡·®À» Á¤±ÔÈ­(0 ~ 1 »çÀÌ °ª)
+        targetProgress = currentExp * 0.01f;    // ï¿½ï¿½ï¿½ï¿½Ä¡ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­(0 ~ 1 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½)
 
         currentScore += 50f;
 
-        if (currentExp >= maxExp) // ·¹º§¾÷
+        if (currentExp >= maxExp) // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             currentExp -= maxExp;
             UpdateExpText();
             currentlevel++;
             levelText.text = currentlevel.ToString();
 
-            targetProgress = 1.0f;  // ¿ì¼±, 100%·Î °æÇèÄ¡ ÇÒ´ç => Update ÇÔ¼ö¿¡¼­ ´ÙÀ½ ÇÒ´ç·® Ã³¸®
+            targetProgress = 1.0f;  // ï¿½ì¼±, 100%ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½Ò´ï¿½ => Update ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ò´ç·® Ã³ï¿½ï¿½
 
             currentScore += 1000f;
 
@@ -96,7 +96,7 @@ public class LevelUpEvent : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space))   // ÀÓ½Ã·Î ½ºÆäÀÌ½º ¹Ù ´©¸¦ ½Ã °æÇèÄ¡ 30 È¹µæ
+        if(Input.GetKeyUp(KeyCode.Space))   // ï¿½Ó½Ã·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¡ 30 È¹ï¿½ï¿½
         {
             GainExp();
         }
@@ -105,43 +105,45 @@ public class LevelUpEvent : MonoBehaviour
         {
             expslider.value += fillSpeed * Time.deltaTime;
 
-            if (expslider.value == 1.0f)    // ½½¶óÀÌ´õ °ªÀÌ 100% Ã¤¿üÀ» ¶§
+            if (expslider.value == 1.0f)    // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ï¿½ 100% Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
             {
-                targetProgress = currentExp * 0.01f;    // ¸ñÇ¥Ä¡ ÀçÇÒ´ç
-                expslider.value = 0f;   // ½½¶óÀÌ´õ °ª ÃÊ±âÈ­
+                targetProgress = currentExp * 0.01f;    // ï¿½ï¿½Ç¥Ä¡ ï¿½ï¿½ï¿½Ò´ï¿½
+                expslider.value = 0f;   // ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
             }
         }
     }
 
-    private void CardMove(Vector3 targetPosition)   // Ä«µå ÀÌµ¿ ¾Ö´Ï¸ÞÀÌ¼Ç
+    private void CardMove(Vector3 targetPosition)   // Ä«ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½
     {
         cardObejcts.DOAnchorPosY(targetPosition.y, 1f).SetEase(Ease.OutQuad).SetUpdate(true);
     }
 
-    private void PauseGameAndOpenCard() // °ÔÀÓ Áß´Ü, Ä«µå ¿­±â
+    private void PauseGameAndOpenCard() // ï¿½ï¿½ï¿½ï¿½ ï¿½ß´ï¿½, Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     {
-        // °ÔÀÓ Á¤Áö
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         Time.timeScale = 0f;
         //isGamePaused = true;
 
-        // Ä«µå ¿ÜÀÇ È­¸é ¾îµÓ°Ô È°¼ºÈ­
+        // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½Ó°ï¿½ È°ï¿½ï¿½È­
         darkPanel.SetActive(true);
         darkPanel.GetComponent<Image>().DOFade(0.7f, 1f).SetUpdate(true);
 
-        // Ä«µå open
-        CardMove(new Vector3(0, -600, 10));
+        // Ä«ï¿½ï¿½ open
+        SFXManager.instance.playSFXSound("SettingOpen");
+        CardMove(new Vector3(0, -1080, 10));
     }
 
-    private void RestartGameAndCloseCard()  // °ÔÀÓ Àç½ÃÀÛ, Ä«µå ´Ý±â
+    private void RestartGameAndCloseCard()  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, Ä«ï¿½ï¿½ ï¿½Ý±ï¿½
     {   
-        // °ÔÀÓ Àç½ÃÀÛ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
         Time.timeScale = 1f;
         //isGamePaused = false;
 
-        // ¾îµÓ°Ô ¸¸µç È­¸é ¹à°Ô ¸¸µé°í ºñÈ°¼ºÈ­
+        // ï¿½ï¿½Ó°ï¿½ ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­
         darkPanel.GetComponent<Image>().DOFade(0f, 1f).OnComplete(() => darkPanel.SetActive(false));
 
-        // Ä«µå close
-        CardMove(new Vector3(0, 500, 10));
+        // Ä«ï¿½ï¿½ close
+        SFXManager.instance.playSFXSound("SettingClose");
+        CardMove(new Vector3(0, 0, 10));
     }
 }
