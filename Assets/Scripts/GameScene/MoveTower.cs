@@ -10,6 +10,8 @@ public class MoveTower : MonoBehaviour
     private float draggingAlpha = 0.5f;
     private string targetTag = "Earth";
 
+    GameObject towerPlacement = null;
+
     void Start()
     {
         originalPosition = transform.position;
@@ -21,6 +23,8 @@ public class MoveTower : MonoBehaviour
         {
             originalColors[i] = spriteRenderers[i].color;
         }
+
+        towerPlacement = GameObject.Find("TowerPlacement");
     }
 
     void OnMouseDown()
@@ -33,7 +37,7 @@ public class MoveTower : MonoBehaviour
         SetObjectAlpha(draggingAlpha);
 
         // 드래그 동안에 불투명하게 설정(타일)
-        SetTileAlpha(0.2f);
+        SetTileAlpha(0.05f);
     }
 
     void OnMouseUp()
@@ -68,7 +72,7 @@ public class MoveTower : MonoBehaviour
         LookAtTarget();
     }
 
-    void LookAtTarget()
+    void LookAtTarget() // 타워 방향 통일
     {
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
 
@@ -104,6 +108,8 @@ public class MoveTower : MonoBehaviour
         {
             // 이동 후 위치가 허용되면 타워를 해당 Tile의 중심 좌표로 이동
             transform.position = targetPosition;
+
+            towerPlacement.GetComponent<TowerPlacementManager>().UpdateTowerStatus();
         }   
         else
         {
@@ -112,7 +118,7 @@ public class MoveTower : MonoBehaviour
         }
     }
 
-    void SetObjectAlpha(float alpha)
+    void SetObjectAlpha(float alpha)    // 타워 투명도 설정
     {
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
@@ -124,7 +130,7 @@ public class MoveTower : MonoBehaviour
         }
     }
 
-    void SetTileAlpha(float alpha)
+    void SetTileAlpha(float alpha)  // 타일 투명도 설정
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
