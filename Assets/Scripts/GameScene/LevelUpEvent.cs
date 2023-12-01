@@ -98,7 +98,6 @@ public class LevelUpEvent : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Space))   // �ӽ÷� �����̽� �� ���� �� ����ġ 30 ȹ��
         {
-            Debug.Log("hello");
             GainExp();
         }
 
