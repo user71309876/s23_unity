@@ -10040,6 +10040,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
       propertyPath: Sounds.m_keys.Array.data[0]
       value: SettingOpen
       objectReference: {fileID: 0}
@@ -10062,6 +10066,10 @@ PrefabInstance:
     - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
       propertyPath: Sounds.m_keys.Array.data[5]
       value: MissileLunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
       propertyPath: Sounds.m_values.Array.data[0]
@@ -10087,6 +10095,70 @@ PrefabInstance:
       propertyPath: Sounds.m_values.Array.data[5]
       value: 
       objectReference: {fileID: 8300000, guid: 090b10433c4974c0991889c7e4d82ff2, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.data[0]
+      value: SettingOpen
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.data[1]
+      value: SettingClose
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.data[2]
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.data[3]
+      value: TowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_keys.Array.data[4]
+      value: TowerDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_keys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f10e7ff812627164fa39911459400577, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: c2babf1d6261b461c971bdf9175951eb, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ec14d07946c7fe429f08fc058e5b2f8, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3eab95774fe317a489c29e1075d3d6a2, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: UISounds.m_values.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 490fa62409aa645c1ae2af086a2ca0c9, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_values.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_keys.Array.data[0]
+      value: MissileLunch
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_keys.Array.data[1]
+      value: Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_values.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 090b10433c4974c0991889c7e4d82ff2, type: 3}
+    - target: {fileID: 1804669866744828630, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
+      propertyPath: EffectSounds.m_values.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: dce0fc50c98b24282867ddc791aa869d, type: 3}
     - target: {fileID: 8282914889349448346, guid: 291a2cdac51dd4d52a741d33b5400d3c, type: 3}
       propertyPath: DopplerLevel
       value: 0

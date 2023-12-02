@@ -45,21 +45,17 @@ public class SettingPrefabController : MonoBehaviour
     }
 
     void Start(){
-        // get last saved value
+        // set last saved value
         BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
         SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
-
-        // set last saved voulume
-        ChangeBGMVolume(PlayerPrefs.GetFloat(BGM.key));
-        ChangeSFXVolume(PlayerPrefs.GetFloat(SFX.key));
     }
 
     // change BGM Volume
     private void ChangeBGMVolume(float volume){
-        if(BGM.XIcon.enabled==true){
+        if(BGM.XIcon.enabled==false){
             PlayerPrefs.SetFloat(BGM.key, volume);
         }
-                // when Volume is 0%
+        // when Volume is 0%
         if(BGM.Slider.value==0.0001f){
             BGM.XIcon.enabled=true;
         }
@@ -72,7 +68,7 @@ public class SettingPrefabController : MonoBehaviour
 
     // change SFX Volume
     private void ChangeSFXVolume(float volume){
-        if(SFX.XIcon.enabled==true){
+        if(SFX.XIcon.enabled==false){
             PlayerPrefs.SetFloat(SFX.key, volume);
         }
         // when Volume is 0%
@@ -90,12 +86,10 @@ public class SettingPrefabController : MonoBehaviour
     public void ToggleButton(Sound sound){
         // when Volume is 0%
         if(sound.Slider.value==0.0001f){
-            // sound.XIcon.enabled=false;
             sound.Slider.value=PlayerPrefs.GetFloat(sound.key);
         }
         //when Volume is not 0%
         else{
-            // sound.XIcon.enabled=true;
             sound.Slider.value=0.0001f;
         }
     }
@@ -155,5 +149,9 @@ public class SettingPrefabController : MonoBehaviour
     private void SetFullScreen(){
         SFXManager.instance.playSFXSound("Button");
         Screen.SetResolution(1920, 1080, true);
+    }
+
+    void OnApplicationQuit(){
+        
     }
 }
