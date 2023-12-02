@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
-    Rigidbody m_rigid = null;//������ٵ� ����
-    Transform m_tfTarget = null;//ǥ�� ����
+    Rigidbody m_rigid = null;//리지드바디 변수
+    Transform m_tfTarget = null;//표적 변수
 
-    [SerializeField] float m_speed = 0f;//�ְ��ӵ�
-    float m_currentSpeed = 0f;//����ӵ�
-    [SerializeField] LayerMask m_layerMask = 0;//���ϴ� ���̾�����ϴ� ����ũ
-    //[SerializeField] ParticleSystem m_psEffect = null;//��ƼŬ �ý��� ����
+    [SerializeField] float m_speed = 0f;//최고속도
+    float m_currentSpeed = 0f;//현재속도
+    [SerializeField] LayerMask m_layerMask = 0;//원하는 레이어검출하는 마스크
+    //[SerializeField] ParticleSystem m_psEffect = null;//파티클 시스템 변수
 
     GameObject level_event;
 
@@ -21,12 +21,12 @@ public class Missile : MonoBehaviour
         damage = newdamage;
     }
 
-    void SearchEnemy()//ǥ�� Ž�� �Լ�
+    void SearchEnemy()//표적 탐색 함수
     {
-        //100���� �̳��� Ư�� �ݶ��̴� ����
+        //100미터 이내의 특정 콜라이더 검출
         Collider[] t_cols = Physics.OverlapSphere(transform.position, 100f, m_layerMask);
 
-        //����� �͵��� �ϳ��� �������� ǥ������ ����
+        //검출된 것들중 하나를 랜덤으로 표적으로 설정
         if (t_cols.Length > 0)
         {
             m_tfTarget = t_cols[Random.Range(0, t_cols.Length)].transform;
@@ -35,7 +35,7 @@ public class Missile : MonoBehaviour
 
     IEnumerator LaunchDelay()
     {
-        //�ӷ��� 0���� �������� �Ǹ� 0.1�� ����� ǥ�� Ž��
+        //속력이 0보다 떨어지게 되면 0.1초 대기후 표적 탐색
         yield return new WaitUntil(() => m_rigid.velocity.y < 0f);
         yield return new WaitForSeconds(0.1f);
         SearchEnemy();
@@ -55,16 +55,16 @@ public class Missile : MonoBehaviour
 
     void Update()
     {
-        if (m_tfTarget != null)//ǥ���� ���� ���
+        if (m_tfTarget != null)//표적이 있을 경우
         {
-            //���� �ӵ��� �ְ��ӵ����� �����ٸ� ��� ���� ������ ��
+            //현재 속도가 최고속도보다 느리다면 계속 가속 시켜줄 것
             if (m_currentSpeed <= m_speed)
                 m_currentSpeed += m_speed * Time.deltaTime;
 
-            //�̻����� ���ӽ�ų ��
+            //미사일을 가속시킬 것
             transform.position += transform.up * m_currentSpeed * Time.deltaTime;
 
-            //ǥ����ġ - �̻��� ��ġ => ����� �Ÿ� ��������� �Ÿ��� �ǹ̾�� normalized�� ���⸸ ���
+            //표적위치 - 미사일 위치 => 방향과 거리 계산이지만 거리는 의미없어서 normalized로 방향만 계산
             Vector3 t_dir = (m_tfTarget.position - transform.position).normalized;
             transform.up = Vector3.Lerp(transform.up, t_dir, 0.25f);
         }
@@ -75,8 +75,7 @@ public class Missile : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
             ApplyDamageToEnemy(collision.gameObject);
-            //Debug.Log("�ı�");
-            Destroy(gameObject);//�̻��� �ı�
+            Destroy(gameObject);
             
         }
     }
