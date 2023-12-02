@@ -39,27 +39,49 @@ public class SettingPrefabController : MonoBehaviour
         BGM.Slider.onValueChanged.AddListener(ChangeBGMVolume);
         SFX.Slider.onValueChanged.AddListener(ChangeSFXVolume);
 
-        // get last saved value
-        BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
-        SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
-
         // change volume when click music icons
         BGM.Icon.onClick.AddListener(() => ToggleButton(BGM));
         SFX.Icon.onClick.AddListener(() => ToggleButton(SFX));
     }
 
+    void Start(){
+        // get last saved value
+        BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
+        SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
+
+        // set last saved voulume
+        ChangeBGMVolume(PlayerPrefs.GetFloat(BGM.key));
+        ChangeSFXVolume(PlayerPrefs.GetFloat(SFX.key));
+    }
+
     // change BGM Volume
     private void ChangeBGMVolume(float volume){
-        if(BGM.XIcon.enabled!=true){
+        if(BGM.XIcon.enabled==true){
             PlayerPrefs.SetFloat(BGM.key, volume);
+        }
+                // when Volume is 0%
+        if(BGM.Slider.value==0.0001f){
+            BGM.XIcon.enabled=true;
+        }
+        //when Volume is not 0%
+        else{
+            BGM.XIcon.enabled=false;
         }
         SoundManager.instance.ChangeBGMVolume(volume);
     }
 
     // change SFX Volume
     private void ChangeSFXVolume(float volume){
-        if(SFX.XIcon.enabled!=true){
+        if(SFX.XIcon.enabled==true){
             PlayerPrefs.SetFloat(SFX.key, volume);
+        }
+        // when Volume is 0%
+        if(SFX.Slider.value==0.0001f){
+            SFX.XIcon.enabled=true;
+        }
+        //when Volume is not 0%
+        else{
+            SFX.XIcon.enabled=false;
         }
         SoundManager.instance.ChangeSFXVolume(volume);
     }
@@ -68,12 +90,12 @@ public class SettingPrefabController : MonoBehaviour
     public void ToggleButton(Sound sound){
         // when Volume is 0%
         if(sound.Slider.value==0.0001f){
-            sound.XIcon.enabled=false;
+            // sound.XIcon.enabled=false;
             sound.Slider.value=PlayerPrefs.GetFloat(sound.key);
         }
         //when Volume is not 0%
         else{
-            sound.XIcon.enabled=true;
+            // sound.XIcon.enabled=true;
             sound.Slider.value=0.0001f;
         }
     }

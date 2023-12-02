@@ -29,6 +29,7 @@ public class Missile : MonoBehaviour
         //����� �͵��� �ϳ��� �������� ǥ������ ����
         if (t_cols.Length > 0)
         {
+            SFXManager.instance.playEffectSound("MissileLunch");
             m_tfTarget = t_cols[Random.Range(0, t_cols.Length)].transform;
         }
     }
@@ -57,6 +58,7 @@ public class Missile : MonoBehaviour
     {
         if (m_tfTarget != null)//ǥ���� ���� ���
         {
+            // fly
             //���� �ӵ��� �ְ��ӵ����� �����ٸ� ��� ���� ������ ��
             if (m_currentSpeed <= m_speed)
                 m_currentSpeed += m_speed * Time.deltaTime;
@@ -74,8 +76,8 @@ public class Missile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
+            SFXManager.instance.playEffectSound("Explosion");
             ApplyDamageToEnemy(collision.gameObject);
-            //Debug.Log("�ı�");
             Destroy(gameObject);//�̻��� �ı�
             
         }

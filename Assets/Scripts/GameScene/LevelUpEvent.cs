@@ -45,7 +45,7 @@ public class LevelUpEvent : MonoBehaviour
         UpdateExpText();
 
         // ī�� �ʱ� ��ġ ����
-        CardMove(new Vector3(0, 500, -10));
+        // CardMove(new Vector3(0, 0, -10));
 
         // ������ ī�� �� �ϳ��� ������ ���, ���� �����, ī�� �ݱ�
         Button card1Button = cardButtons.transform.Find("Card1").GetComponent<Button>();

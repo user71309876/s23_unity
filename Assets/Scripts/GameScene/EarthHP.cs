@@ -22,6 +22,10 @@ public class EarthHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyUp(KeyCode.O))   // �ӽ÷� �����̽� �� ���� �� ����ġ 30 ȹ��
+        {
+            gameOver();
+        }
         if (hp_splider.value <= 0)
         {
             Time.timeScale = 0f;

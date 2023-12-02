@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MissileLauncher : MonoBehaviour
 {
-    private GameObject m_goMissile = null; // ¹Ì»çÀÏ ÇÁ¸®ÆÕ º¯¼ö ¼±¾ð
+    // private AudioSource misslieLunchSound;
+    private GameObject m_goMissile = null; // ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     [SerializeField] GameObject missilePrefabLowDamage = null;
     [SerializeField] GameObject missilePrefabMediumDamage = null;
     [SerializeField] GameObject missilePrefabHighDamage = null;
 
-    [SerializeField] Transform m_tfMissileSpawn = null;//¹ß»çµÈ À§Ä¡ º¯¼ö ¼±¾ð
+    [SerializeField] Transform m_tfMissileSpawn = null;//ï¿½ß»ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     [SerializeField] float currentDamage = 1f;
 
@@ -21,6 +23,7 @@ public class MissileLauncher : MonoBehaviour
 
     private void Start()
     {
+        // misslieLunchSound=gameObject.GetComponent<AudioSource>();
         m_goMissile = missilePrefabLowDamage;
         StartCoroutine(MissileLaunch());
     }
@@ -56,12 +59,12 @@ public class MissileLauncher : MonoBehaviour
 
             if(HasTarget())
             {
-                // Å¸¿ö°¡ ¹Ù¶óº¸´Â ¹æÇâÀ¸·Î ¼³Á¤
+                // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 Quaternion rotationtoEarth = Quaternion.LookRotation(earthObject.transform.position - m_tfMissileSpawn.position);
-                //¹Ì»çÀÏ »ý¼º
+                //ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, rotationtoEarth * Quaternion.Euler(90, 0, 0));
 
-                // FlameParticle ÆÄÆ¼Å¬¿¡ Á¢±Ù
+                // FlameParticle ï¿½ï¿½Æ¼Å¬ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 ParticleSystem flameParticle = t_missile.GetComponentInChildren<ParticleSystem>();
                 if (flameParticle != null)
                 {
@@ -83,7 +86,7 @@ public class MissileLauncher : MonoBehaviour
                     }
                     else if (currentSpeed < 2.0f)
                     {
-                        // Start Color ¼Ó¼ºÀ» º¯°æ (Random Between Two Colors·Î ¼³Á¤µÈ °æ¿ì)
+                        // Start Color ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (Random Between Two Colorsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½)
                         mainModule.startColor = new ParticleSystem.MinMaxGradient(
                             new Color(255f / 255f, 204f / 255f, 13f / 255f, 158f / 255f),
                             new Color(255f / 255f, 109f / 255f, 0f, 143f / 255f)
@@ -94,16 +97,16 @@ public class MissileLauncher : MonoBehaviour
                 t_missile.GetComponent<Missile>().SetDamage(currentDamage);
 
 
-                //À§·Î Åü³¯¸²
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
             }
             
-
-            yield return new WaitForSeconds(currentSpeed); // ÇöÀç ¼Óµµ¿¡ ¸ÂÃç¼­ ³¯¸²
+            yield return new WaitForSeconds(currentSpeed); // ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ç¼­ ï¿½ï¿½ï¿½ï¿½
+            // misslieLunchSound.Play();
         }
     }
 
-    private bool HasTarget()    // ¸ñÇ¥ È®ÀÎ
+    private bool HasTarget()    // ï¿½ï¿½Ç¥ È®ï¿½ï¿½
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, LayerMask.GetMask("EnemyLayer"));
 

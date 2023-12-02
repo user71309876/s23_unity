@@ -11,19 +11,32 @@ public class EffectSound : SerializableDictionary<string, AudioClip>{}
 public class SFXManager : MonoBehaviour
 {
     public static SFXManager instance;
-    private AudioSource SFXSource;
-    [SerializeField] private EffectSound Sounds;
+    private AudioSource UISFXSource;
+    [SerializeField] private EffectSound UISounds;
+    [SerializeField] private EffectSound EffectSounds;
+    [SerializeField]private AudioSource[] SFXSources;
 
     void Start()
     {
         if(SFXManager.instance == null){
             SFXManager.instance = this;
         }
-        SFXSource=gameObject.GetComponent<AudioSource>();
+        UISFXSource=gameObject.GetComponent<AudioSource>();
+    }
+
+    public void playEffectSound(string soundName){
+        for(int i=0;i<SFXSources.Length;i++){
+            if(!SFXSources[i].isPlaying){
+                SFXSources[i].clip=EffectSounds[soundName];
+                SFXSources[i].Play();
+                return;
+            }
+        }
+        Debug.Log("All effect audio source is playing");
     }
 
     public void playSFXSound(string soundName){
-        SFXSource.clip=Sounds[soundName];
-        SFXSource.Play();
+        UISFXSource.clip=UISounds[soundName];
+        UISFXSource.Play();
     }
 }

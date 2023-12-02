@@ -105,7 +105,6 @@ public class CardButtonManager : MonoBehaviour
 
         // Ÿ���� �������� ���õ� Ÿ���� ��ġ�� ����
         Instantiate(towerPrefab, randomTile.transform.position, Quaternion.identity);
-        Debug.Log("Ÿ�� ��ġ �Ϸ�");
     }
 
     bool HasObjectOnTile(GameObject tile)   // ���� �ʿ�##############
