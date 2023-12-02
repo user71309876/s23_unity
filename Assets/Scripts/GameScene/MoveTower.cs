@@ -5,7 +5,7 @@ public class MoveTower : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
-    private Vector3 originalPosition; // �̵��ϱ� ���� ��ġ�� �����ϱ� ���� ����
+    private Vector3 originalPosition;
     private Color[] originalColors;
     private float draggingAlpha = 0.5f;
     private string targetTag = "Earth";
@@ -30,30 +30,29 @@ public class MoveTower : MonoBehaviour
     void OnMouseDown()
     {
         SFXManager.instance.playSFXSound("TowerDown");
-        // ���콺 Ŭ�� �� Ÿ�� �̵� ����
+        
         isDragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        // �巡�� ���� �����ϰ� ����(Ÿ��)
+        // 타워 투명도 변경
         SetObjectAlpha(draggingAlpha);
 
-        // �巡�� ���ȿ� �������ϰ� ����(Ÿ��)
+        // 타일 불투명
         SetTileAlpha(0.05f);
     }
 
     void OnMouseUp()
     {
         SFXManager.instance.playSFXSound("TowerUp");
-        // ���콺 �� �� Ÿ�� �̵� ����
+
         isDragging = false;
 
-        // �̵� �� ��ġ�� Ư�� ������ �����ϴ��� Ȯ��
         CheckMoveValidity();
 
-        // �巡�� ���� �� ������ ����(Ÿ��)
+        // 타워 투명도 복구
         SetObjectAlpha(1f);
 
-        // �巡�� ������ �����ϰ� ����(Ÿ��)
+        // 타일 투명하게
         SetTileAlpha(0f);
     }
 
@@ -61,11 +60,10 @@ public class MoveTower : MonoBehaviour
     {
         if (isDragging)
         {
-            // ���콺 �巡�� �� Ÿ�� ��ġ ������Ʈ
+            // 타워 이동
             Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10);
             Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
 
-            // z �� ��ġ�� �̵��ϱ� ���� ��ġ�� ����
             curPosition.z = transform.position.z;
 
             transform.position = curPosition;
@@ -74,7 +72,7 @@ public class MoveTower : MonoBehaviour
         LookAtTarget();
     }
 
-    void LookAtTarget() // Ÿ�� ���� ����
+    void LookAtTarget() // 타워 지구 방향 유지
     {
         GameObject target = GameObject.FindGameObjectWithTag(targetTag);
 
@@ -88,7 +86,6 @@ public class MoveTower : MonoBehaviour
 
     void CheckMoveValidity()
     {
-        // �̵� �� ��ġ�� Ư�� ������ �����ϴ��� Ȯ��
         Collider2D[] hitColliders = Physics2D.OverlapBoxAll(transform.position, transform.localScale, 0);
         bool isValidMove = false;
         Vector3 targetPosition = originalPosition;
@@ -97,30 +94,27 @@ public class MoveTower : MonoBehaviour
         {
             if (collider.CompareTag("Tile"))
             {
-                // �̵� �� ��ġ�� Tile�� ������ ���� ��� �̵� ���
+                // 타일 체크
                 isValidMove = true;
                 targetPosition = collider.bounds.center;
                 originalPosition = targetPosition;
-                Debug.Log("Ÿ�� ����");
                 break;
             }
         }
 
         if (isValidMove)
         {
-            // �̵� �� ��ġ�� ���Ǹ� Ÿ���� �ش� Tile�� �߽� ��ǥ�� �̵�
             transform.position = targetPosition;
 
             towerPlacement.GetComponent<TowerPlacementManager>().UpdateTowerStatus();
         }   
         else
         {
-            // �̵� �� ��ġ�� ������ ���� ��� �̵��ϱ� ���� ��ġ�� �ǵ���
             transform.position = originalPosition;
         }
     }
 
-    void SetObjectAlpha(float alpha)    // Ÿ�� ������ ����
+    void SetObjectAlpha(float alpha)
     {
         SpriteRenderer[] spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
@@ -132,7 +126,7 @@ public class MoveTower : MonoBehaviour
         }
     }
 
-    void SetTileAlpha(float alpha)  // Ÿ�� ������ ����
+    void SetTileAlpha(float alpha)
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
