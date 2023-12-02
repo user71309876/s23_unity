@@ -3559,9 +3559,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemy: {fileID: 3753632884769756842, guid: 90b1d1406d9638444aeb303ddf21714f, type: 3}
   center: {fileID: 972443134}
-  minSpawnInterval: 1
+  minSpawnInterval: 3
   maxSpawnInterval: 3
-  baseHealth: 5
+  baseHealth: 1
 --- !u!4 &584820153
 Transform:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class CardButtonManager : MonoBehaviour
 
         if (towers.Length == 0)
         {
-            Debug.Log("������ Ÿ���� �����ϴ� (ApplyAttackSpeedUp)");
+            Debug.Log("공격속도 증가 대상 없음");
             return;
         }
 
@@ -52,7 +52,7 @@ public class CardButtonManager : MonoBehaviour
         if (missileLauncher != null)
         {
             missileLauncher.ApplyAttckSpeed();
-            Debug.Log("Ÿ�� ���ݼӵ� ���� ���� �Ϸ�");
+            Debug.Log("공격속도 증가 적용");
         }
     }
 
@@ -62,7 +62,7 @@ public class CardButtonManager : MonoBehaviour
 
         if(towers.Length == 0)
         {
-            Debug.Log("������ Ÿ���� �����ϴ� (ApplyAttackPowerUp)");
+            Debug.Log("공격력 증가 대상 없음");
             return;
         }
 
@@ -73,7 +73,7 @@ public class CardButtonManager : MonoBehaviour
         if(missileLauncher != null)
         {
             missileLauncher.ApplyAttackPower();
-            Debug.Log("Ÿ�� ���ݷ� ���� ���� �Ϸ�");
+            Debug.Log("공격력 증가 적용");
         }
     }
 
@@ -81,47 +81,42 @@ public class CardButtonManager : MonoBehaviour
     {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
 
-        // �� Ÿ���� ������ ����Ʈ
         var emptyTiles = new List<GameObject>();
 
         foreach (var tile in tiles)
         {
-            // Ÿ�� ���� �ٸ� ������Ʈ�� ������ �� Ÿ�� ����Ʈ�� �߰�
             if (!HasObjectOnTile(tile))
             {
                 emptyTiles.Add(tile);
             }
         }
 
-        // �� Ÿ���� ������ �Լ� ����
+        // 빈 타일 존재 하지 않음
         if (emptyTiles.Count == 0)
         {
             Debug.Log("No empty tiles available.");
             return;
         }
 
-        // �� Ÿ�� �� �������� ����
         GameObject randomTile = emptyTiles[Random.Range(0, emptyTiles.Count)];
 
-        // Ÿ���� �������� ���õ� Ÿ���� ��ġ�� ����
+        // 랜덤 타일 위에 타워 추가
         Instantiate(towerPrefab, randomTile.transform.position, Quaternion.identity);
+        Debug.Log("타워 추가 완료");
     }
 
-    bool HasObjectOnTile(GameObject tile)   // ���� �ʿ�##############
+    bool HasObjectOnTile(GameObject tile)   // 타일 위에 타워 체크
     {
-        // �ش� Ÿ�� ���� �ٸ� ������Ʈ�� �ִ��� üũ
         Collider2D[] colliders = Physics2D.OverlapCircleAll(tile.transform.position, tile.GetComponent<CircleCollider2D>().radius, 0);
 
         foreach (var collider in colliders)
         {
             if (collider.gameObject != tile)
             {
-                // �ٸ� ������Ʈ�� �ִ� ��� true ��ȯ
                 return true;
             }
         }
 
-        // �ٸ� ������Ʈ�� ���� ��� false ��ȯ
         return false;
     }
 }
