@@ -17,7 +17,7 @@ public class EnemyRotateRound : MonoBehaviour
 
     private void Start()
     {
-        rotation_speed = Random.Range(10.0f, 50.0f);    // 10 ~ 50 사이의 랜덤 값
+        rotation_speed = 25.0f;//Random.Range(10.0f, 50.0f);    // 10 ~ 50 사이의 랜덤 값
         timer = 0f;
         isRotating = true;
     }

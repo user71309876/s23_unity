@@ -24,7 +24,7 @@ public class Missile : MonoBehaviour
     void SearchEnemy()//표적 탐색 함수
     {
         //100미터 이내의 특정 콜라이더 검출
-        Collider[] t_cols = Physics.OverlapSphere(transform.position, 100f, m_layerMask);
+        Collider[] t_cols = Physics.OverlapSphere(transform.position, 5f, m_layerMask);
 
         //검출된 것들중 하나를 랜덤으로 표적으로 설정
         if (t_cols.Length > 0)

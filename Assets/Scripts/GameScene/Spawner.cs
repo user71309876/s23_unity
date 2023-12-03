@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(DelaySpawn());
         nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
     }
         
@@ -29,9 +30,10 @@ public class Spawner : MonoBehaviour
     {
         if(Time.time >= nextSpawnTime)  // 스폰 시간이 되었을 때
         {
-            SpawnObject();  // 오브젝트 스폰
+            //SpawnObject();// 오브젝트 스폰
+            StartCoroutine(DelaySpawn());
             nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
-            baseHealth += 0.1f;//체력이 늘어나는 크기
+            baseHealth += 0.7f;//체력이 늘어나는 크기
         }
     }
 
@@ -43,6 +45,15 @@ public class Spawner : MonoBehaviour
         GameObject newObject = Instantiate(spawnEnemy, spawnPosition, spawnQuaternion); // 새 오브젝트 초기 설정
         newObject.GetComponent<EnemyRotateRound>().center = center; // 회전 중심 설정
         newObject.GetComponent<EnemyController>().SetHealth(baseHealth);
+    }
+
+    IEnumerator DelaySpawn()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            SpawnObject();
+            yield return new WaitForSeconds(0.5f); // 0.1초 동안 기다립니다.
+        }
     }
 }
 
