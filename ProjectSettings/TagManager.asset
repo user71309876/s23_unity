@@ -13,6 +13,7 @@ TagManager:
   - Tile
   - Tower
   - Earth
+  - Launcher
   layers:
   - Default
   - TransparentFX

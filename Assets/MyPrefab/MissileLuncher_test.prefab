@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4746228341948468883}
   m_Layer: 0
-  m_Name: Launcher
+  m_Name: RightLauncher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,12 +24,43 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 601106243565072479}
   m_LocalRotation: {x: 0, y: -0, z: -0.32599455, w: 0.94537175}
-  m_LocalPosition: {x: 0.9, y: 1.74, z: 0}
+  m_LocalPosition: {x: 0.89, y: 1.91, z: 0}
   m_LocalScale: {x: 2.0898206, y: 2.0898206, z: 2.0898206}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3852074479464001745}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &662987339256151647
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703844549152651500}
+  m_Layer: 0
+  m_Name: LeftLauncher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &703844549152651500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662987339256151647}
+  m_LocalRotation: {x: 0, y: -0, z: -0.32599455, w: 0.94537175}
+  m_LocalPosition: {x: -0.94, y: 1.88, z: 0}
+  m_LocalScale: {x: 2.0898206, y: 2.0898206, z: 2.0898206}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3852074479464001745}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3031639846252012790
 GameObject:
@@ -238,6 +269,7 @@ Transform:
   - {fileID: 7551899766961362969}
   - {fileID: 3852074478210468948}
   - {fileID: 4746228341948468883}
+  - {fileID: 703844549152651500}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 38.052}
@@ -256,7 +288,8 @@ MonoBehaviour:
   missilePrefabLowDamage: {fileID: 1388432215564494, guid: 3fa10f475c159524188d71779b6759c2, type: 3}
   missilePrefabMediumDamage: {fileID: 1694848149411730, guid: 55ba744f2d9c38e45b19022d816e18a9, type: 3}
   missilePrefabHighDamage: {fileID: 1098318907123292, guid: 90b7ac57480ecf543bd33e025cc4e9e3, type: 3}
-  m_tfMissileSpawn: {fileID: 4746228341948468883}
+  m_leftMissileSpawn: {fileID: 703844549152651500}
+  m_rightMissileSpawn: {fileID: 4746228341948468883}
   currentDamage: 1
   currentSpeed: 2
 --- !u!61 &-4407944005926902450
