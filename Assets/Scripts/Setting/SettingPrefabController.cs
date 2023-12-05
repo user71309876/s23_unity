@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine.UI;
 using DG.Tweening;
+//TODO : 포인트가 up 될때만 볼륨값 저장하기
 
 public class SettingPrefabController : MonoBehaviour
 {
