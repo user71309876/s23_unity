@@ -10,7 +10,7 @@ public class Missile : MonoBehaviour
     [SerializeField] float m_speed = 0f;//최고속도
     float m_currentSpeed = 0f;//현재속도
     [SerializeField] LayerMask m_layerMask = 0;//원하는 레이어검출하는 마스크
-    //[SerializeField] ParticleSystem m_psEffect = null;//파티클 시스템 변수
+    [SerializeField] ParticleSystem m_explosionEffect = null;//파티클 시스템 변수
 
     GameObject level_event;
 
@@ -32,6 +32,7 @@ public class Missile : MonoBehaviour
             SFXManager.instance.playEffectSound("MissileLunch");
             m_tfTarget = t_cols[Random.Range(0, t_cols.Length)].transform;
         }
+
     }
 
     IEnumerator LaunchDelay()
@@ -69,12 +70,20 @@ public class Missile : MonoBehaviour
             Vector3 t_dir = (m_tfTarget.position - transform.position).normalized;
             transform.up = Vector3.Lerp(transform.up, t_dir, 0.25f);
         }
+        else
+        {
+            SearchEnemy();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
+            if(m_explosionEffect != null)
+            {
+                Instantiate(m_explosionEffect, collision.contacts[0].point, Quaternion.identity);
+            }
             SFXManager.instance.playEffectSound("Explosion");
             ApplyDamageToEnemy(collision.gameObject);
             Destroy(gameObject);

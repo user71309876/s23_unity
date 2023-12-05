@@ -38,7 +38,7 @@ public class MoveTower : MonoBehaviour
         SetObjectAlpha(draggingAlpha);
 
         // 타일 불투명
-        SetTileAlpha(0.05f);
+        SetTileAlpha(0.1f);
     }
 
     void OnMouseUp()

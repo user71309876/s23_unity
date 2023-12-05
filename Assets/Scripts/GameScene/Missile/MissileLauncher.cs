@@ -7,12 +7,12 @@ using UnityEngine.Audio;
 public class MissileLauncher : MonoBehaviour
 {
     // private AudioSource misslieLunchSound;
-    private GameObject m_goMissile = null; // �̻��� ������ ���� ����
+    private GameObject m_goMissile = null; // 미사일 프리팹
     [SerializeField] GameObject missilePrefabLowDamage = null;
     [SerializeField] GameObject missilePrefabMediumDamage = null;
     [SerializeField] GameObject missilePrefabHighDamage = null;
 
-    [SerializeField] Transform m_tfMissileSpawn = null;//�߻�� ��ġ ���� ����
+    [SerializeField] Transform m_tfMissileSpawn = null; // 미사일 스폰
 
     [SerializeField] float currentDamage = 1f;
 
@@ -59,12 +59,12 @@ public class MissileLauncher : MonoBehaviour
 
             if(HasTarget())
             {
-                // Ÿ���� �ٶ󺸴� �������� ����
+                // 
                 Quaternion rotationtoEarth = Quaternion.LookRotation(earthObject.transform.position - m_tfMissileSpawn.position);
-                //�̻��� ����
+                // 
                 GameObject t_missile = Instantiate(m_goMissile, m_tfMissileSpawn.position, rotationtoEarth * Quaternion.Euler(90, 0, 0));
 
-                // FlameParticle ��ƼŬ�� ����
+                // FlameParticle
                 ParticleSystem flameParticle = t_missile.GetComponentInChildren<ParticleSystem>();
                 if (flameParticle != null)
                 {
@@ -86,7 +86,7 @@ public class MissileLauncher : MonoBehaviour
                     }
                     else if (currentSpeed < 2.0f)
                     {
-                        // Start Color �Ӽ��� ���� (Random Between Two Colors�� ������ ���)
+                        
                         mainModule.startColor = new ParticleSystem.MinMaxGradient(
                             new Color(255f / 255f, 204f / 255f, 13f / 255f, 158f / 255f),
                             new Color(255f / 255f, 109f / 255f, 0f, 143f / 255f)
@@ -97,18 +97,17 @@ public class MissileLauncher : MonoBehaviour
                 t_missile.GetComponent<Missile>().SetDamage(currentDamage);
 
 
-                //���� ������
                 //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
             }
             
-            yield return new WaitForSeconds(currentSpeed); // ���� �ӵ��� ���缭 ����
+            yield return new WaitForSeconds(currentSpeed); // attack speed
             // misslieLunchSound.Play();
         }
     }
 
-    private bool HasTarget()    // ��ǥ Ȯ��
+    private bool HasTarget()    // Detect target
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 100f, LayerMask.GetMask("EnemyLayer"));
+        Collider[] colliders = Physics.OverlapSphere(transform.position, 5f, LayerMask.GetMask("EnemyLayer"));
 
         return (colliders.Length > 0);
     }
