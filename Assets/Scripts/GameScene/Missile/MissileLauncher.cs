@@ -16,7 +16,7 @@ public class MissileLauncher : MonoBehaviour
 
     [SerializeField] float currentDamage = 1f;
 
-    [SerializeField] float currentSpeed = 2f;
+    public float currentSpeed = 2f;
 
     private float powerUp = 1f;
     private float speedUp = 0.5f;

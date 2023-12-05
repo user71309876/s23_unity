@@ -8,6 +8,7 @@ public class CardButtonManager : MonoBehaviour
 {
     public GameObject towerPrefab;
     private Button button;
+    
 
     private void Start()
     {
@@ -38,23 +39,43 @@ public class CardButtonManager : MonoBehaviour
     void ApplyAttackSpeedUp()
     {
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        MissileLauncher missileLauncher = null;
 
         if (towers.Length == 0)
         {
-            Debug.Log("공격속도 증가 대상 없음");
+            Debug.Log("타워를 찾을 수 없습니다.");
             return;
         }
 
-        GameObject randomTower = towers[Random.Range(0, towers.Length)];
+        // 공격속도 0.5s 이상인 타워에만 적용
+        List<GameObject> eligibleTowers = new List<GameObject>();
 
-        MissileLauncher missileLauncher = randomTower.GetComponent<MissileLauncher>();
+        foreach (GameObject tower in towers)
+        {
+            missileLauncher = tower.GetComponent<MissileLauncher>();
+            if (missileLauncher != null && missileLauncher.currentSpeed > 0.5f)
+            {
+                eligibleTowers.Add(tower);
+            }
+        }
+
+        if (eligibleTowers.Count == 0)
+        {
+            Debug.Log("공격 속도를 업그레이드할 수 있는 타워가 없습니다.");
+            return;
+        }
+
+        GameObject randomTower = eligibleTowers[Random.Range(0, eligibleTowers.Count)];
+
+        missileLauncher = randomTower.GetComponent<MissileLauncher>();
 
         if (missileLauncher != null)
         {
             missileLauncher.ApplyAttckSpeed();
-            Debug.Log("공격속도 증가 적용");
+            Debug.Log("타워의 공격 속도가 업그레이드되었습니다: " + randomTower.name);
         }
     }
+
 
     void ApplyAttackPowerUp()
     {
@@ -62,7 +83,7 @@ public class CardButtonManager : MonoBehaviour
 
         if(towers.Length == 0)
         {
-            Debug.Log("공격력 증가 대상 없음");
+            Debug.Log("공격력을 증가할 수 있는 타워가 없습니다.");
             return;
         }
 
@@ -73,7 +94,7 @@ public class CardButtonManager : MonoBehaviour
         if(missileLauncher != null)
         {
             missileLauncher.ApplyAttackPower();
-            Debug.Log("공격력 증가 적용");
+            Debug.Log("타워의 공격력이 업그레이드 되었습니다: " + randomTower.name);
         }
     }
 
@@ -94,7 +115,7 @@ public class CardButtonManager : MonoBehaviour
         // 빈 타일 존재 하지 않음
         if (emptyTiles.Count == 0)
         {
-            Debug.Log("No empty tiles available.");
+            Debug.Log("배치할 수 있는 타일이 존재하지 않습니다");
             return;
         }
 
@@ -102,7 +123,7 @@ public class CardButtonManager : MonoBehaviour
 
         // 랜덤 타일 위에 타워 추가
         Instantiate(towerPrefab, randomTile.transform.position, Quaternion.identity);
-        Debug.Log("타워 추가 완료");
+        Debug.Log("타워 추가 완료되었습니다");
     }
 
     bool HasObjectOnTile(GameObject tile)   // 타일 위에 타워 체크
