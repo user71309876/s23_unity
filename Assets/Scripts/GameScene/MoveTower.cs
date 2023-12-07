@@ -12,6 +12,8 @@ public class MoveTower : MonoBehaviour
 
     GameObject towerPlacement = null;
 
+    public GameObject AttackBoundary;
+
     void Start()
     {
         originalPosition = transform.position;
@@ -34,6 +36,8 @@ public class MoveTower : MonoBehaviour
         isDragging = true;
         offset = transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        AttackBoundary.SetActive(true);
+
         // 타워 투명도 변경
         SetObjectAlpha(draggingAlpha);
 
@@ -48,6 +52,8 @@ public class MoveTower : MonoBehaviour
         isDragging = false;
 
         CheckMoveValidity();
+
+        AttackBoundary.SetActive(false);
 
         // 타워 투명도 복구
         SetObjectAlpha(1f);

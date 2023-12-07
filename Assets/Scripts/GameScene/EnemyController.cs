@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 /*
     Enemy 1 프리팹 초기화 : 회전(-30, -5, -25), 크기(0.16, 0.16, 0.16)
-
  */
 
 public class EnemyController : MonoBehaviour
@@ -25,9 +24,12 @@ public class EnemyController : MonoBehaviour
     public GameObject solar_plane;//50%
     public GameObject solar_plane2;//50%
 
+    GameObject randomItemObject;
+
     void Start()
     {
         level_event = GameObject.Find("LevelUpEvent");
+        randomItemObject = GameObject.Find("RandomItem");
     }
 
     void Update()
@@ -38,6 +40,11 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
             //SpawnObject();
             level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
+
+            if(Random.Range(0f, 1f) <= 0.3f)
+            {
+                randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
+            }
         }
         else if (hp_splider.value <= hp_splider.maxValue / 5)
         {
