@@ -47,6 +47,7 @@ public class SettingPrefabController : MonoBehaviour
 
     void Start(){
         // set last saved value
+        Debug.Log(PlayerPrefs.GetFloat(BGM.key));
         BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
         SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
     }
@@ -87,6 +88,7 @@ public class SettingPrefabController : MonoBehaviour
     public void ToggleButton(Sound sound){
         // when Volume is 0%
         if(sound.Slider.value==0.0001f){
+            // PlayerPrefs.SetFloat(SFX.key, volume);
             sound.Slider.value=PlayerPrefs.GetFloat(sound.key);
         }
         //when Volume is not 0%

@@ -22,6 +22,7 @@ public class MissileLauncher : MonoBehaviour
     private float powerUp = 1f;
     private float speedUp = 0.5f;
     private Animator animator;
+<<<<<<< Updated upstream
 
     /*
     공격모션 바꾸는 방법
@@ -29,6 +30,8 @@ public class MissileLauncher : MonoBehaviour
     animator.SetInteger("AttackMode",1); -> 양쪽팔이 번갈아가며 공격
     animator.SetInteger("AttackMode",2); -> 양쪽팔이 동시에 공격
     */
+=======
+>>>>>>> Stashed changes
 
     private void Start()
     {
@@ -36,6 +39,13 @@ public class MissileLauncher : MonoBehaviour
         StartCoroutine(MissileLaunch());
         animator=gameObject.GetComponent<Animator>();
     }
+
+    /*
+    런처 애니메이션 바꿀때 다음과 같은 방법을 사용하시면 됩니다
+    animator.SetInteger("LunchMode",0); => 오른쪽팔만 발사, 기본값
+    animator.SetInteger("LunchMode",1); => 두 팔이 다른 타이밍에 발사
+    animator.SetInteger("LunchMode",2); => 두 팔이 같은 타이밍에 발사
+    */
 
     public void ApplyAttackPower()
     {
@@ -58,7 +68,12 @@ public class MissileLauncher : MonoBehaviour
     public void ApplyAttckSpeed()
     {
         currentSpeed -= speedUp;
+<<<<<<< Updated upstream
         animator.SetFloat("AttackSpeed",currentSpeed/2f);
+=======
+        animator.SetFloat("LunchSpeed",currentSpeed/2f);
+        Debug.Log(currentSpeed);
+>>>>>>> Stashed changes
     }
 
     // Set the tower's missile launch locations to 2
@@ -148,6 +163,10 @@ public class MissileLauncher : MonoBehaviour
                 animator.SetTrigger("Attack");
                 // 위로 퉁 쏘아올리는 동작
                 //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
+<<<<<<< Updated upstream
+=======
+                animator.SetTrigger("Lunch");
+>>>>>>> Stashed changes
             }
             
             yield return new WaitForSeconds(currentSpeed); // attack speed

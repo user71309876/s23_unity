@@ -12,7 +12,11 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
+<<<<<<< Updated upstream
     m_StateMachine: {fileID: 5901326708121718903}
+=======
+    m_StateMachine: {fileID: 3831428588338002284}
+>>>>>>> Stashed changes
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -22,7 +26,11 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
+<<<<<<< Updated upstream
 --- !u!1107 &5901326708121718903
+=======
+--- !u!1107 &3831428588338002284
+>>>>>>> Stashed changes
 AnimatorStateMachine:
   serializedVersion: 6
   m_ObjectHideFlags: 1

@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /*
-    Enemy 1 ÇÁ¸®ÆÕ ÃÊ±âÈ­ : È¸Àü(-30, -5, -25), Å©±â(0.16, 0.16, 0.16)
+    Enemy 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­ : È¸ï¿½ï¿½(-30, -5, -25), Å©ï¿½ï¿½(0.16, 0.16, 0.16)
  */
 
 public class EnemyController : MonoBehaviour
 {
     public Slider hp_splider;
 
-    //Vector2 pos;//ºÎ¼­Áö±â Àü À§Ä¡ ÆÄ¾ÇÇØ¼­ ±× º¸´Ù ÀÛÀº Àû °´Ã¼ ³Ö±â À§ÇÑ º¯¼ö
+    //Vector2 pos;//ï¿½Î¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½Ä¾ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ã¼ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    //public GameObject[] nextspawnEnemy = new GameObject[1]; // ÆÄ±«µÈ ÈÄ, ´ÙÀ½À¸·Î ¼ÒÈ¯ÇÒ ¿ÀºêÁ§Æ® ¼³Á¤
+    //public GameObject[] nextspawnEnemy = new GameObject[1]; // ï¿½Ä±ï¿½ï¿½ï¿½ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
 
     GameObject level_event;
 
-    //ÀÏÁ¤ Ã¼·ÂÀÌÇÏ°¡ µÇ¸é È°¼ºÀ» ²¨¹ö¸± ¿ä¼Òµé
+    //ï¿½ï¿½ï¿½ï¿½ Ã¼ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½Ç¸ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Òµï¿½
     public GameObject aluminum;//20%
     public GameObject aluminum2;//20%
     public GameObject korpus;//20%
@@ -46,8 +46,9 @@ public class EnemyController : MonoBehaviour
             //pos = this.gameObject.transform.position;
             Destroy(gameObject);
             //SpawnObject();
-            level_event.GetComponent<LevelUpEvent>().GainExp(); // Àû Ã³¸® µÉ ½Ã ·¹º§¾÷
+            level_event.GetComponent<LevelUpEvent>().GainExp(); // ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
+<<<<<<< Updated upstream
             // Àû Ã³Ä¡ ½Ã, °ÔÀÌÁö gaugeInterval ¸¸Å­ »ó½Â
             if(!pushfeverButton.GetFeverTime())
             {
@@ -58,6 +59,12 @@ public class EnemyController : MonoBehaviour
             //{
             //    randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
             //}
+=======
+            // if(Random.Range(0f, 1f) <= 0.3f)
+            // {
+            //     randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
+            // }
+>>>>>>> Stashed changes
         }
         else if (hp_splider.value <= hp_splider.maxValue / 5)
         {
@@ -77,14 +84,14 @@ public class EnemyController : MonoBehaviour
         hp_splider.value -= damage;
     }
 
-    //void SpawnObject()  // Àû ½ºÆù
+    //void SpawnObject()  // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     //{
     //    if(nextspawnEnemy != null && nextspawnEnemy.Length > 0)
     //    {
-    //        int randomIndex = Random.Range(0, nextspawnEnemy.Length);  // ¹è¿­ÀÌ¶ó¸é ·£´ý ¼±ÅÃ
+    //        int randomIndex = Random.Range(0, nextspawnEnemy.Length);  // ï¿½è¿­ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    //        Quaternion rotation = Quaternion.Euler(-30f, -5f, -25f);    // ¿ÀºêÁ§Æ® È¸Àü ¼³Á¤
-    //        GameObject newObject = Instantiate(nextspawnEnemy[randomIndex], pos, rotation); // »õ ¿ÀºêÁ§Æ® ÃÊ±â ¼³Á¤
+    //        Quaternion rotation = Quaternion.Euler(-30f, -5f, -25f);    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    //        GameObject newObject = Instantiate(nextspawnEnemy[randomIndex], pos, rotation); // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½
     //    }
     //}
 

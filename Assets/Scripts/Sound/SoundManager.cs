@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
     public void ChangeBGMVolume(float volume){
         MasterMixer.SetFloat("BGM", Mathf.Log10(volume) * 20);
         MasterMixer.GetFloat("BGM",out BGM_Volume);
+        Debug.Log(BGM_Volume);
     }
 
     public void ChangeSFXVolume(float volume){

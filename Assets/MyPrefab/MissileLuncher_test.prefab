@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1076024573286433792}
   m_Layer: 0
-  m_Name: Led
+  m_Name: Led (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: -4407944005926902450}
   - component: {fileID: -4221831068731854034}
   - component: {fileID: 1164394827709247682}
-  - component: {fileID: 7070902110232628866}
+  - component: {fileID: 1501249930669512928}
   m_Layer: 0
   m_Name: MissileLuncher_test
   m_TagString: Tower
@@ -851,7 +851,7 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!95 &7070902110232628866
+--- !u!95 &1501249930669512928
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
