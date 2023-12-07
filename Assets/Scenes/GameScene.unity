@@ -1310,9 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnemy: {fileID: 3753632884769756842, guid: 90b1d1406d9638444aeb303ddf21714f, type: 3}
   center: {fileID: 972443134}
-  minSpawnInterval: 10
-  maxSpawnInterval: 10
-  baseHealth: 1
+  baseHealth: 3
 --- !u!4 &584820153
 Transform:
   m_ObjectHideFlags: 0
@@ -5491,6 +5489,10 @@ PrefabInstance:
     - target: {fileID: 2146544667768421222, guid: 30ae1ddd1a4168b4aaa18963a1a4cb23, type: 3}
       propertyPath: m_Name
       value: RandomItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2146544667768421222, guid: 30ae1ddd1a4168b4aaa18963a1a4cb23, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30ae1ddd1a4168b4aaa18963a1a4cb23, type: 3}

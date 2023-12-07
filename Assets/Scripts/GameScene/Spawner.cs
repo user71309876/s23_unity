@@ -12,17 +12,19 @@ public class Spawner : MonoBehaviour
     public GameObject spawnEnemy;   // 적 오브젝트
     public Transform center;    // 중심 위치
 
-    public float minSpawnInterval = 0.5f;   // 최소 스폰 시간
-    public float maxSpawnInterval = 2.0f;   // 최대 스폰 시간
+    //public float minSpawnInterval = 0.5f;   // 최소 스폰 시간
+    //public float maxSpawnInterval = 2.0f;   // 최대 스폰 시간
+    private float SpawnInterval = 45f;
 
     private float nextSpawnTime;    // 다음 스폰 시간
 
     public float baseHealth = 10f; // 초기 체력, 유니티 내에서 설정하는게 더 편함 고로 이건 무시
 
+    private float enemyNum = 7;
     void Start()
     {
         StartCoroutine(DelaySpawn());
-        nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
+        nextSpawnTime = Time.time + SpawnInterval;/*Random.Range(minSpawnInterval, maxSpawnInterval);*/   // 다음 스폰 시간 설정
     }
         
     // Update is called once per frame
@@ -32,8 +34,12 @@ public class Spawner : MonoBehaviour
         {
             //SpawnObject();// 오브젝트 스폰
             StartCoroutine(DelaySpawn());
-            nextSpawnTime = Time.time + Random.Range(minSpawnInterval, maxSpawnInterval);   // 다음 스폰 시간 설정
-            baseHealth += 0.7f;//체력이 늘어나는 크기
+            nextSpawnTime = Time.time + SpawnInterval;/*Random.Range(minSpawnInterval, maxSpawnInterval);*/   // 다음 스폰 시간 설정
+            if(SpawnInterval > 10f)
+            {
+                SpawnInterval -= 5f;
+            }
+            baseHealth += 3f;//체력이 늘어나는 크기
         }
     }
 
@@ -49,10 +55,10 @@ public class Spawner : MonoBehaviour
 
     IEnumerator DelaySpawn()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < enemyNum; i++)
         {
             SpawnObject();
-            yield return new WaitForSeconds(0.5f); // 0.1초 동안 기다립니다.
+            yield return new WaitForSeconds(Random.Range(0.5f,2f)); // 0.5초 동안 기다립니다.
         }
     }
 }
