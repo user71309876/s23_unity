@@ -37,7 +37,7 @@ public class CardButtonManager : MonoBehaviour
     }
 
     void ApplyAttackSpeedUp()
-    {
+    {   
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         MissileLauncher missileLauncher = null;
 

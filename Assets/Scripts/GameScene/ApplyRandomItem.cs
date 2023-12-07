@@ -19,7 +19,7 @@ public class ApplyRandomItem : MonoBehaviour
                 inactiveTowers.Add(tower);
             }
         }
-
+        
         // Activate LeftLauncher for a randomly selected Tower
         if (inactiveTowers.Count > 0)
         {
