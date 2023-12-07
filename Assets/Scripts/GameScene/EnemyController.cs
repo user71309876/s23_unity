@@ -26,10 +26,17 @@ public class EnemyController : MonoBehaviour
 
     GameObject randomItemObject;
 
+    private ImgsFillDynamic ImgsFD;
+    float gaugeInterval = 0.05f;
+
+    PushFeverButton pushfeverButton;
+
     void Start()
     {
         level_event = GameObject.Find("LevelUpEvent");
         randomItemObject = GameObject.Find("RandomItem");
+        ImgsFD = GameObject.Find("ImgFillRound").GetComponent<ImgsFillDynamic>();
+        pushfeverButton = GameObject.Find("FeverButton").GetComponent<PushFeverButton>();
     }
 
     void Update()
@@ -41,10 +48,16 @@ public class EnemyController : MonoBehaviour
             //SpawnObject();
             level_event.GetComponent<LevelUpEvent>().GainExp(); // 적 처리 될 시 레벨업
 
-            if(Random.Range(0f, 1f) <= 0.3f)
+            // 적 처치 시, 게이지 gaugeInterval 만큼 상승
+            if(!pushfeverButton.GetFeverTime())
             {
-                randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
+                this.ImgsFD.SetValue(this.ImgsFD.GetValue() + gaugeInterval);
             }
+            
+            //if(Random.Range(0f, 1f) <= 0.3f)
+            //{
+            //    randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
+            //}
         }
         else if (hp_splider.value <= hp_splider.maxValue / 5)
         {
