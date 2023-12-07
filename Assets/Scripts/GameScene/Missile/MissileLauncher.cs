@@ -21,13 +21,20 @@ public class MissileLauncher : MonoBehaviour
 
     private float powerUp = 1f;
     private float speedUp = 0.5f;
-    private Animation ani;
+    private Animator animator;
+
+    /*
+    공격모션 바꾸는 방법
+    animator.SetInteger("AttackMode",0); -> 오른쪽팔만 공격, 기본값
+    animator.SetInteger("AttackMode",1); -> 양쪽팔이 번갈아가며 공격
+    animator.SetInteger("AttackMode",2); -> 양쪽팔이 동시에 공격
+    */
 
     private void Start()
     {
         m_goMissile = missilePrefabLowDamage;
         StartCoroutine(MissileLaunch());
-        ani=this.GetComponent<Animation>();
+        animator=gameObject.GetComponent<Animator>();
     }
 
     public void ApplyAttackPower()
@@ -51,6 +58,7 @@ public class MissileLauncher : MonoBehaviour
     public void ApplyAttckSpeed()
     {
         currentSpeed -= speedUp;
+        animator.SetFloat("AttackSpeed",currentSpeed/2f);
     }
 
     // Set the tower's missile launch locations to 2
@@ -137,10 +145,9 @@ public class MissileLauncher : MonoBehaviour
                     }
                     rightMissile.GetComponent<Missile>().SetDamage(currentDamage);
                 }
-
+                animator.SetTrigger("Attack");
                 // 위로 퉁 쏘아올리는 동작
                 //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
-                ani.Play("LunchOnce");
             }
             
             yield return new WaitForSeconds(currentSpeed); // attack speed
