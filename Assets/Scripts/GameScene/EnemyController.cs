@@ -48,8 +48,7 @@ public class EnemyController : MonoBehaviour
             //SpawnObject();
             level_event.GetComponent<LevelUpEvent>().GainExp(); // ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-<<<<<<< Updated upstream
-            // Àû Ã³Ä¡ ½Ã, °ÔÀÌÁö gaugeInterval ¸¸Å­ »ó½Â
+            // ï¿½ï¿½ Ã³Ä¡ ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ gaugeInterval ï¿½ï¿½Å­ ï¿½ï¿½ï¿½
             if(!pushfeverButton.GetFeverTime())
             {
                 this.ImgsFD.SetValue(this.ImgsFD.GetValue() + gaugeInterval);
@@ -59,12 +58,6 @@ public class EnemyController : MonoBehaviour
             //{
             //    randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
             //}
-=======
-            // if(Random.Range(0f, 1f) <= 0.3f)
-            // {
-            //     randomItemObject.GetComponent<ApplyRandomItem>().ApplyRandomItemOnEnemyDefeat();
-            // }
->>>>>>> Stashed changes
         }
         else if (hp_splider.value <= hp_splider.maxValue / 5)
         {
