@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine.UI;
 using DG.Tweening;
-//TODO : 포인트가 up 될때만 볼륨값 저장하기
 
 public class SettingPrefabController : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class SettingPrefabController : MonoBehaviour
 
     [Serializable]
     public struct Sound{
-        public Slider Slider; // volume slider
+        public CustomSlider Slider; // volume slider
         public Button Icon; // a icon to the left of the slider
         public Image XIcon; // a icon similar in shape to an 'X'
         [HideInInspector] public string key; // hash key
@@ -47,16 +46,12 @@ public class SettingPrefabController : MonoBehaviour
 
     void Start(){
         // set last saved value
-        Debug.Log(PlayerPrefs.GetFloat(BGM.key));
         BGM.Slider.value=PlayerPrefs.GetFloat(BGM.key);
         SFX.Slider.value=PlayerPrefs.GetFloat(SFX.key);
     }
 
     // change BGM Volume
     private void ChangeBGMVolume(float volume){
-        if(BGM.XIcon.enabled==false){
-            PlayerPrefs.SetFloat(BGM.key, volume);
-        }
         // when Volume is 0%
         if(BGM.Slider.value==0.0001f){
             BGM.XIcon.enabled=true;
@@ -70,9 +65,6 @@ public class SettingPrefabController : MonoBehaviour
 
     // change SFX Volume
     private void ChangeSFXVolume(float volume){
-        if(SFX.XIcon.enabled==false){
-            PlayerPrefs.SetFloat(SFX.key, volume);
-        }
         // when Volume is 0%
         if(SFX.Slider.value==0.0001f){
             SFX.XIcon.enabled=true;
@@ -88,13 +80,17 @@ public class SettingPrefabController : MonoBehaviour
     public void ToggleButton(Sound sound){
         // when Volume is 0%
         if(sound.Slider.value==0.0001f){
-            // PlayerPrefs.SetFloat(SFX.key, volume);
             sound.Slider.value=PlayerPrefs.GetFloat(sound.key);
         }
         //when Volume is not 0%
         else{
             sound.Slider.value=0.0001f;
         }
+    }
+
+    public void SaveSliderValue(){
+        PlayerPrefs.SetFloat(BGM.key, BGM.Slider.value);
+        PlayerPrefs.SetFloat(SFX.key, SFX.Slider.value);
     }
 
     public void OpenSettingWindow(){
