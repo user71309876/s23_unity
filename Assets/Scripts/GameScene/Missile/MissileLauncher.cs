@@ -30,11 +30,14 @@ public class MissileLauncher : MonoBehaviour
     animator.SetInteger("AttackMode",2); -> 양쪽팔이 동시에 공격
     */
 
+    private void Awake(){
+        animator=gameObject.GetComponent<Animator>();
+    }
+
     private void Start()
     {
         m_goMissile = missilePrefabLowDamage;
         StartCoroutine(MissileLaunch());
-        animator=gameObject.GetComponent<Animator>();
     }
 
     public void ApplyAttackPower()
