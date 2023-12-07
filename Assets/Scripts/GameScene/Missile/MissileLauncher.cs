@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 
 public class MissileLauncher : MonoBehaviour
 {
-    // private AudioSource misslieLunchSound;
     private GameObject m_goMissile = null; // 미사일 프리팹
     [SerializeField] GameObject missilePrefabLowDamage = null;
     [SerializeField] GameObject missilePrefabMediumDamage = null;
@@ -20,12 +19,13 @@ public class MissileLauncher : MonoBehaviour
 
     private float powerUp = 1f;
     private float speedUp = 0.5f;
+    private Animation ani;
 
     private void Start()
     {
-        // misslieLunchSound=gameObject.GetComponent<AudioSource>();
         m_goMissile = missilePrefabLowDamage;
         StartCoroutine(MissileLaunch());
+        ani=this.GetComponent<Animation>();
     }
 
     public void ApplyAttackPower()
@@ -95,13 +95,12 @@ public class MissileLauncher : MonoBehaviour
                 }
 
                 t_missile.GetComponent<Missile>().SetDamage(currentDamage);
-
-
+                Debug.Log("lunch!!!");
+                ani.Play("LunchOnce");
                 //t_missile.GetComponent<Rigidbody>().velocity = Vector3.forward * 3f;
             }
             
             yield return new WaitForSeconds(currentSpeed); // attack speed
-            // misslieLunchSound.Play();
         }
     }
 
