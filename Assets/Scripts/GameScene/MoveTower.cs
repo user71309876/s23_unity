@@ -13,7 +13,6 @@ public class MoveTower : MonoBehaviour
     GameObject towerPlacement = null;
 
     public GameObject AttackBoundary;
-
     void Start()
     {
         originalPosition = transform.position;
