@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
         randomItemObject = GameObject.Find("RandomItem");
         ImgsFD = GameObject.Find("ImgFillRound").GetComponent<ImgsFillDynamic>();
         pushfeverButton = GameObject.Find("FeverButton").GetComponent<PushFeverButton>();
+        hp_splider.value = hp_splider.maxValue;
     }
 
     void Update()

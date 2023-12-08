@@ -18,7 +18,8 @@ public class Spawner : MonoBehaviour
 
     private float nextSpawnTime;    // 다음 스폰 시간
 
-    public float baseHealth = 10f; // 초기 체력, 유니티 내에서 설정하는게 더 편함 고로 이건 무시
+    public float baseHealth; // 초기 체력, 유니티 내에서 설정하는게 더 편함 고로 이건 무시
+    private int spawnCount = 1;
 
     private float enemyNum = 7;
     void Start()
@@ -40,6 +41,7 @@ public class Spawner : MonoBehaviour
                 SpawnInterval -= 5f;
             }
             baseHealth += 3f;//체력이 늘어나는 크기
+            spawnCount++;
         }
     }
 
@@ -55,6 +57,10 @@ public class Spawner : MonoBehaviour
 
     IEnumerator DelaySpawn()
     {
+        if (spawnCount % 4 == 0)
+        {
+            enemyNum += 2;
+        }
         for (int i = 0; i < enemyNum; i++)
         {
             SpawnObject();
