@@ -17,6 +17,10 @@ public class PushFeverButton : MonoBehaviour
 
     private Vector3 originalScale;
 
+    Tweener feverTween;
+
+    LevelUpEvent levelUpEvent;
+
     private void Start()
     {
         imgsFill = GameObject.Find("ImgFillRound").GetComponent<ImgsFillDynamic>();
@@ -26,15 +30,33 @@ public class PushFeverButton : MonoBehaviour
         button.onClick.AddListener(() => StartCoroutine(HandleFeverButtonCoroutine()));
 
         originalScale = FeverGauge.transform.localScale;
+
+        feverTween.Pause();
+
+        levelUpEvent = GameObject.Find("LevelUpEvent").GetComponent<LevelUpEvent>();
     }   
 
     private IEnumerator HandleFeverButtonCoroutine()
     {
+        feverTween = FeverGauge.transform.DOScale(pulseScale, pulseDuration).SetLoops(-1, LoopType.Yoyo);
+
         isFeverTime = true;
         ActivateTower(isFeverTime);
-        imgsFill.SetValue(0f, false, 0.001f);
+        
+        Debug.Log("피버타임 활성화 되었습니다");
 
-        FeverGauge.transform.DOScale(pulseScale, pulseDuration).SetLoops(-1, LoopType.Yoyo);
+        imgsFill.SetValue(0f, false, 0.0002f);
+
+       
+        if (!levelUpEvent.isCardOpen)
+        {
+            Debug.Log("피버 모션 재생");
+            feverTween.Play();
+        }
+        else
+        {
+            feverTween.Pause();
+        }
 
         yield return new WaitForSeconds(10f);
 
@@ -60,8 +82,6 @@ public class PushFeverButton : MonoBehaviour
                 leftLauncher.gameObject.SetActive(isActive);
             }
         }
-
-        Debug.Log("피버타임 활성화 되었습니다");
     }
 
     public bool GetFeverTime()

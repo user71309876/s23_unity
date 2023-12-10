@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -26,6 +27,7 @@ public class ImgsFillDynamic : MonoBehaviour
     public string TailText = "%";
 
     public Button FeverButton;
+    LevelUpEvent levelUpEvent;
 
     /// <summary>
     /// USAGE:Set SetFillAmount
@@ -34,6 +36,10 @@ public class ImgsFillDynamic : MonoBehaviour
     /// <param name="_isDirectly">Is Directly Fill</param>
     /// <param name="_duringSpeed">Fill Speed 0.5(2sec), 2(0.5sec)</param>
     /// 
+    private void Start()
+    {
+        levelUpEvent = GameObject.Find("LevelUpEvent").GetComponent<LevelUpEvent>();
+    }
 
     public void SetValue(float _value, bool _isDirectly = false, float _duringSpeed = 1F)
     {
@@ -61,6 +67,11 @@ public class ImgsFillDynamic : MonoBehaviour
 
     void Update()
     {
+        if(levelUpEvent.isCardOpen)
+        {
+            return;
+        }
+
         if (this.ImgFacterTarget != null && nowTime > -1F)
         {
             nowTime += Time.deltaTime * this.speed;

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+
 
 public class BtnType : MonoBehaviour
 {
@@ -9,10 +11,14 @@ public class BtnType : MonoBehaviour
     public static Scene currentScene;
     public float currentspeed;
 
+    private TextMeshProUGUI tmp2x;
+
     private void Start()
     {
         Time.timeScale = 1f;
         currentspeed = 1f;
+
+        tmp2x = GetComponentInChildren<TextMeshProUGUI>();
     }
     public void OnBtnClick()
     {
@@ -46,11 +52,15 @@ public class BtnType : MonoBehaviour
                 {
                     currentspeed = 2f;
                     Time.timeScale = currentspeed;
+
+                    tmp2x.text = "2x";
                 }
                 else
                 {
                     currentspeed = 1f;
                     Time.timeScale = currentspeed;
+
+                    tmp2x.text = "1x";
                 }
                 break;
         }

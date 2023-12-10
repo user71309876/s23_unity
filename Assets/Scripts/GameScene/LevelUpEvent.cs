@@ -31,6 +31,10 @@ public class LevelUpEvent : MonoBehaviour
     public RectTransform cardObejcts;
     public GameObject cardButtons;
 
+    public bool isCardOpen = false;
+
+    private float Btn2x = 1f;
+
     private void Awake()
     {
         expslider = GameObject.Find("ExpSlider").GetComponent<Slider>();
@@ -115,6 +119,7 @@ public class LevelUpEvent : MonoBehaviour
     {
         // stop game
         Time.timeScale = 0f;
+        isCardOpen = true;
 
         // open dark panel
         darkPanel.SetActive(true);
@@ -126,8 +131,10 @@ public class LevelUpEvent : MonoBehaviour
 
     private void RestartGameAndCloseCard()
     {
+        Btn2x = GameObject.Find("2x").GetComponent<BtnType>().currentspeed;
         // game start
-        Time.timeScale = 1f;
+        Time.timeScale = Btn2x;
+        isCardOpen = false;
 
         // close dark panel
         darkPanel.GetComponent<Image>().DOFade(0f, 1f).OnComplete(() => darkPanel.SetActive(false));
