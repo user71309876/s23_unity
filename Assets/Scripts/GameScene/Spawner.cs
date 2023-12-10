@@ -14,7 +14,7 @@ public class Spawner : MonoBehaviour
 
     //public float minSpawnInterval = 0.5f;   // 최소 스폰 시간
     //public float maxSpawnInterval = 2.0f;   // 최대 스폰 시간
-    private float SpawnInterval = 45f;
+    private float SpawnInterval = 40f;
 
     private float nextSpawnTime;    // 다음 스폰 시간
 
@@ -60,11 +60,12 @@ public class Spawner : MonoBehaviour
         if (spawnCount % 4 == 0)
         {
             enemyNum += 2;
+            baseHealth += 2f;
         }
         for (int i = 0; i < enemyNum; i++)
         {
             SpawnObject();
-            yield return new WaitForSeconds(Random.Range(0.5f,2f)); // 0.5초 동안 기다립니다.
+            yield return new WaitForSeconds(Random.Range(0.5f,1.5f)); // 0.5초 동안 기다립니다.
         }
     }
 }
