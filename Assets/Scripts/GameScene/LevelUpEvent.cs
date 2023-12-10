@@ -31,8 +31,6 @@ public class LevelUpEvent : MonoBehaviour
     public RectTransform cardObejcts;
     public GameObject cardButtons;
 
-
-
     private void Awake()
     {
         expslider = GameObject.Find("ExpSlider").GetComponent<Slider>();
@@ -127,7 +125,7 @@ public class LevelUpEvent : MonoBehaviour
     }
 
     private void RestartGameAndCloseCard()
-    {   
+    {
         // game start
         Time.timeScale = 1f;
 

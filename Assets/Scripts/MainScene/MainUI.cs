@@ -8,7 +8,8 @@ public enum BTNType
     Main,
     Quit,
     Game,
-    Setting
+    Setting,
+    Speed2x
 }
 
 public class MainUI : MonoBehaviour

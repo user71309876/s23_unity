@@ -36,11 +36,11 @@ public class Spawner : MonoBehaviour
             //SpawnObject();// 오브젝트 스폰
             StartCoroutine(DelaySpawn());
             nextSpawnTime = Time.time + SpawnInterval;/*Random.Range(minSpawnInterval, maxSpawnInterval);*/   // 다음 스폰 시간 설정
-            if(SpawnInterval > 10f)
+            if(SpawnInterval > 20f)
             {
-                SpawnInterval -= 5f;
+                SpawnInterval -= 3f;
             }
-            baseHealth += 3f;//체력이 늘어나는 크기
+            baseHealth += 1f;//체력이 늘어나는 크기
             spawnCount++;
         }
     }
