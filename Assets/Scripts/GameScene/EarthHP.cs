@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ public class EarthHP : MonoBehaviour
     public GameObject gameOverUI;
     public TMP_Text earthHP;
     private float targetEarthHP;
+    private Transform earthTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +19,14 @@ public class EarthHP : MonoBehaviour
         Time.timeScale = 1f;
         hp_splider.value = hp_splider.maxValue;
         targetEarthHP = hp_splider.value;
+
+        earthTransform = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.O))   // �ӽ÷� �����̽� �� ���� �� ����ġ 30 ȹ��
+        if(Input.GetKeyUp(KeyCode.O))
         {
             gameOver();
         }
@@ -43,9 +47,15 @@ public class EarthHP : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
         {
+            ShakeEarth();
             targetEarthHP--;
-            Destroy(collision.gameObject);//�ΰ����� �ı�
+            Destroy(collision.gameObject);
         }
+    }
+
+    void ShakeEarth()
+    {
+        earthTransform.DOShakePosition(1f, strength: 0.3f, vibrato: 15, randomness: 90, fadeOut: false);
     }
 
     public void gameOver()

@@ -123,7 +123,7 @@ public class LevelUpEvent : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space))   // level up key
+        if(Input.GetKeyUp(KeyCode.F))   // level up key
         {
             GainExp();
         }

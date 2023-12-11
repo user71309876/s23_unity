@@ -3,21 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
-    Enemy 1 ������ �ʱ�ȭ : ȸ��(-30, -5, -25), ũ��(0.16, 0.16, 0.16)
- */
-
 public class EnemyController : MonoBehaviour
 {
     public Slider hp_splider;
 
-    //Vector2 pos;//�μ����� �� ��ġ �ľ��ؼ� �� ���� ���� �� ��ü �ֱ� ���� ����
-
-    //public GameObject[] nextspawnEnemy = new GameObject[1]; // �ı��� ��, �������� ��ȯ�� ������Ʈ ����
 
     GameObject level_event;
 
-    //���� ü�����ϰ� �Ǹ� Ȱ���� ������ ��ҵ�
     public GameObject aluminum;//20%
     public GameObject aluminum2;//20%
     public GameObject korpus;//20%
@@ -47,9 +39,9 @@ public class EnemyController : MonoBehaviour
             //pos = this.gameObject.transform.position;
             Destroy(gameObject);
             //SpawnObject();
-            level_event.GetComponent<LevelUpEvent>().GainExp(); // �� ó�� �� �� ������
+            level_event.GetComponent<LevelUpEvent>().GainExp();
+            
 
-            // �� óġ ��, ������ gaugeInterval ��ŭ ���
             if(!pushfeverButton.GetFeverTime())
             {
                 this.ImgsFD.SetValue(this.ImgsFD.GetValue() + gaugeInterval);
@@ -78,14 +70,14 @@ public class EnemyController : MonoBehaviour
         hp_splider.value -= damage;
     }
 
-    //void SpawnObject()  // �� ����
+    //void SpawnObject()
     //{
     //    if(nextspawnEnemy != null && nextspawnEnemy.Length > 0)
     //    {
-    //        int randomIndex = Random.Range(0, nextspawnEnemy.Length);  // �迭�̶�� ���� ����
+    //        int randomIndex = Random.Range(0, nextspawnEnemy.Length); 
 
-    //        Quaternion rotation = Quaternion.Euler(-30f, -5f, -25f);    // ������Ʈ ȸ�� ����
-    //        GameObject newObject = Instantiate(nextspawnEnemy[randomIndex], pos, rotation); // �� ������Ʈ �ʱ� ����
+    //        Quaternion rotation = Quaternion.Euler(-30f, -5f, -25f); 
+    //        GameObject newObject = Instantiate(nextspawnEnemy[randomIndex], pos, rotation); 
     //    }
     //}
 
