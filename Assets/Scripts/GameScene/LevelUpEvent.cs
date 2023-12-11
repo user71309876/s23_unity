@@ -19,6 +19,7 @@ public class LevelUpEvent : MonoBehaviour
     private float maxExp = 100f;
     private float currentlevel = 1f;
     private float currentScore = 0f;
+    private float increaseScore = 50f;
 
     // when level up, maxExp = maxExp + increaseExp;
     private float increaseExp = 10f;
@@ -36,6 +37,9 @@ public class LevelUpEvent : MonoBehaviour
     public bool isCardOpen = false;
 
     private float Btn2x = 1f;
+
+    public TMP_Text scoreEffectTextPrefab;
+    public Transform scoreTextTransform;
 
     private void Awake()
     {
@@ -64,7 +68,25 @@ public class LevelUpEvent : MonoBehaviour
         expText.text = currentExp + " / " + maxExp;
     }
 
-    
+    private void UpdateScoreText()
+    {
+        // text update
+        scoreText.text = currentScore.ToString();
+        gameOverText.text = currentScore.ToString();
+    }
+
+    void ShowScoreEffect(float score)
+    {
+        TMP_Text scoreEffectText = Instantiate(scoreEffectTextPrefab, scoreTextTransform);
+
+        scoreEffectText.text = $"+{score}";
+        scoreEffectText.rectTransform.anchoredPosition = new Vector2(0, -60);
+
+        scoreEffectText.DOFade(0, 1.5f).OnComplete(() => Destroy(scoreEffectText.gameObject));
+        scoreEffectText.rectTransform.DOAnchorPosY(scoreEffectText.rectTransform.anchoredPosition.y - 50, 1.5f)
+            .OnComplete(() => Destroy(scoreEffectText.gameObject));
+    }
+
     public void GainExp()
     {
         currentExp += expInterval;
@@ -72,7 +94,8 @@ public class LevelUpEvent : MonoBehaviour
 
         targetProgress = currentExp * 0.01f; // normalized
 
-        currentScore += 50f;
+        increaseScore = 50f;
+        currentScore += increaseScore;
 
         if (currentExp >= maxExp) // level up
         {
@@ -87,14 +110,15 @@ public class LevelUpEvent : MonoBehaviour
             maxExp += increaseExp;
             UpdateExpText();
 
-            currentScore += 1000f;
+            increaseScore = 1000f;
+            currentScore += increaseScore;
 
             PauseGameAndOpenCard();
         }
 
-        // text update
-        scoreText.text = currentScore.ToString();
-        gameOverText.text = currentScore.ToString();
+        UpdateScoreText();
+
+        ShowScoreEffect(increaseScore);
     }
 
     private void Update()
