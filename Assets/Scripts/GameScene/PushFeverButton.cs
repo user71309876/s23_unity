@@ -20,6 +20,7 @@ public class PushFeverButton : MonoBehaviour
     Tweener feverTween;
 
     LevelUpEvent levelUpEvent;
+    private float imgsFillspeed = 1f;
 
     private void Start()
     {
@@ -45,9 +46,10 @@ public class PushFeverButton : MonoBehaviour
         
         Debug.Log("피버타임 활성화 되었습니다");
 
-        imgsFill.SetValue(0f, false, 0.0002f);
+        imgsFillspeed = GameObject.Find("2x").GetComponent<BtnType>().currentspeed;
 
-       
+        imgsFill.SetValue(0f, false, 0.0002f * imgsFillspeed);
+
         if (!levelUpEvent.isCardOpen)
         {
             Debug.Log("피버 모션 재생");

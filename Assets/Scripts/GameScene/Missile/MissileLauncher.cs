@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.Audio;
+using DG.Tweening;
 
 public class MissileLauncher : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class MissileLauncher : MonoBehaviour
     private float powerUp = 1f;
     private float speedUp = 0.5f;
     public Animator animator;
+
+    [SerializeField] GameObject powerUpParticlePrefab = null;
+    [SerializeField] GameObject speedUpParticlePrefab = null;
 
     /*
     공격모션 바꾸는 방법
@@ -56,12 +60,33 @@ public class MissileLauncher : MonoBehaviour
         {
             m_goMissile = missilePrefabHighDamage;
         }
+
+        PlayPowerUpParticle();
+    }
+
+    private void PlayPowerUpParticle()
+    {
+        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
+        GameObject powerUpParticle = Instantiate(powerUpParticlePrefab, particlePosition, Quaternion.identity);
+
+        Destroy(powerUpParticle, 2f);
     }
 
     public void ApplyAttckSpeed()
     {
         currentSpeed -= speedUp;
         animator.SetFloat("AttackSpeed",currentSpeed/2f);
+
+        PlaySpeedUpParticle();
+    }
+
+    private void PlaySpeedUpParticle()
+    {
+        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
+        GameObject speedUpParticle = Instantiate(speedUpParticlePrefab, particlePosition, Quaternion.identity);
+
+        Destroy(speedUpParticle, 2f);
+
     }
 
     // Set the tower's missile launch locations to 2

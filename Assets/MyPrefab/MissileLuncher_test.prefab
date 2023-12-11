@@ -787,12 +787,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missilePrefabLowDamage: {fileID: 1388432215564494, guid: 3fa10f475c159524188d71779b6759c2, type: 3}
-  missilePrefabMediumDamage: {fileID: 1694848149411730, guid: 55ba744f2d9c38e45b19022d816e18a9, type: 3}
-  missilePrefabHighDamage: {fileID: 1098318907123292, guid: 90b7ac57480ecf543bd33e025cc4e9e3, type: 3}
+  missilePrefabMediumDamage: {fileID: 8090617561582667989, guid: 21e86699285fc5945a915de9a2fbe968, type: 3}
+  missilePrefabHighDamage: {fileID: 271849347278682417, guid: 1989f779ef8619d47a5e334daaa19b83, type: 3}
   m_leftMissileSpawn: {fileID: 703844549152651500}
   m_rightMissileSpawn: {fileID: 4746228341948468883}
   currentDamage: 1
   currentSpeed: 2
+  animator: {fileID: 0}
+  powerUpParticlePrefab: {fileID: 7518068830825001563, guid: d852312be532f1c4eb0fb9898775ea6c, type: 3}
+  speedUpParticlePrefab: {fileID: 7518068830825001563, guid: c3dc738e159f2064f95d03162758ee71, type: 3}
 --- !u!61 &-4407944005926902450
 BoxCollider2D:
   m_ObjectHideFlags: 0
