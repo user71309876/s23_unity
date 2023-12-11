@@ -20,6 +20,8 @@ public class LevelUpEvent : MonoBehaviour
     private float currentlevel = 1f;
     private float currentScore = 0f;
 
+    // when level up, maxExp = maxExp + increaseExp;
+    private float increaseExp = 10f;
     
     private Slider expslider;
 
@@ -76,10 +78,14 @@ public class LevelUpEvent : MonoBehaviour
         {
             currentExp -= maxExp;
             UpdateExpText();
+
             currentlevel++;
             levelText.text = currentlevel.ToString();
 
             targetProgress = 1.0f;
+            
+            maxExp += increaseExp;
+            UpdateExpText();
 
             currentScore += 1000f;
 
