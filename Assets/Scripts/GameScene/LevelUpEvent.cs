@@ -92,7 +92,7 @@ public class LevelUpEvent : MonoBehaviour
         currentExp += expInterval;
         UpdateExpText();
 
-        targetProgress = currentExp * 0.01f; // normalized
+        targetProgress = currentExp / maxExp; // normalized
 
         increaseScore = 50f;
         currentScore += increaseScore;
