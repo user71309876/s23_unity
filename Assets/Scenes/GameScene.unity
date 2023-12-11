@@ -459,6 +459,7 @@ MonoBehaviour:
   hp_splider: {fileID: 3608701769995596853}
   gameOverUI: {fileID: 1561368954}
   earthHP: {fileID: 1200059798}
+  explosionParticle: {fileID: 8584529029410186290, guid: bd19ba24a011dbb4a9b95309fc48670e, type: 3}
 --- !u!224 &253924095 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4550842721521976175, guid: 0fb3eacf931d55b48ab79f59d004ee11, type: 3}

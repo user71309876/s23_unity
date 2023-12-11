@@ -12,7 +12,7 @@ public class EarthHP : MonoBehaviour
     public TMP_Text earthHP;
     private float targetEarthHP;
     private Transform earthTransform;
-    public GameObject explosionPrefab;
+    public ParticleSystem explosionParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,6 @@ public class EarthHP : MonoBehaviour
         }
         if (hp_splider.value <= 0)
         {
-            Time.timeScale = 0f;
             gameOver();
         }
 
@@ -58,19 +57,29 @@ public class EarthHP : MonoBehaviour
     {
         earthTransform.DOShakePosition(1f, strength: 0.3f, vibrato: 15, randomness: 90, fadeOut: false);
     }
+    
 
     void SpawnExplosions(int count)
     {
         for (int i = 0; i < count; i++)
         {
-            Vector3 randomOffset = Random.onUnitSphere * 5f;
-            Instantiate(explosionPrefab, earthTransform.position + randomOffset, Quaternion.identity);
+            Vector3 randomOffset = Random.onUnitSphere * 2f;
+            Instantiate(explosionParticle, earthTransform.position + randomOffset, Quaternion.identity);
         }
     }
 
     public void gameOver()
     {
-        SpawnExplosions(10);
+        SpawnExplosions(1);
+
+        StartCoroutine(DelayBeforeGameOverUI());
+    }
+
+    private IEnumerator DelayBeforeGameOverUI()
+    {
+        yield return new WaitForSeconds(3f);
+
+        Time.timeScale = 0f;
         gameOverUI.SetActive(true);
     }
 }
