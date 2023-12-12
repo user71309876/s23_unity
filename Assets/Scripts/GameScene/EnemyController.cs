@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     GameObject randomItemObject;
 
     private ImgsFillDynamic ImgsFD;
-    float gaugeInterval = 0.05f;
+    float gaugeInterval = 0.03f;
 
     PushFeverButton pushfeverButton;
 

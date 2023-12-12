@@ -5,7 +5,7 @@ public class TowerPlacementManager : MonoBehaviour
     private GameObject[] tiles;
     private int[] towerStatus;
 
-    private int towerMaximum = 10;
+    private int towerMaximum = 15;
 
     void Start()
     {
@@ -64,7 +64,7 @@ public class TowerPlacementManager : MonoBehaviour
 
         if (count >= towerMaximum)
         {
-            Debug.Log("타워 개수 한계치 도달(10개)");
+            Debug.Log("타워 개수 한계치 도달");
             return true;
         }
 

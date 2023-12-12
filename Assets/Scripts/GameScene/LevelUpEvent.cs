@@ -22,7 +22,7 @@ public class LevelUpEvent : MonoBehaviour
     private float increaseScore = 50f;
 
     // when level up, maxExp = maxExp + increaseExp;
-    private float increaseExp = 10f;
+    private float increaseExp = 30f;
     
     private Slider expslider;
 
