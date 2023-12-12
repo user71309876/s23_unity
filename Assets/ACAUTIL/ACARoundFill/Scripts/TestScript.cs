@@ -18,14 +18,6 @@ public class TestScript : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            if (!pushFeverButton.GetFeverTime())
-            {
-                ImgsFD.SetValue(ImgsFD.GetValue() + 0.2f);
-            }
-        }
-
         timeSinceLastIncrease += Time.deltaTime;
         if(timeSinceLastIncrease >= increaseInterval)
         {
