@@ -281,7 +281,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 300}
-  m_SizeDelta: {x: 800, y: 200}
+  m_SizeDelta: {x: 830, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &148581793
 MonoBehaviour:
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GAME NAME
+  m_text: Space Junk Cleanup
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b72670fa85600e74c8676ef30ddc39c6, type: 2}
   m_sharedMaterial: {fileID: -5898166690250964591, guid: b72670fa85600e74c8676ef30ddc39c6, type: 2}
