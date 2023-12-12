@@ -27,7 +27,7 @@ public class LevelUpEvent : MonoBehaviour
     private Slider expslider;
 
     private float targetProgress = 0;
-    private float fillSpeed = 2.0f;
+    private float fillSpeed = 0.5f;
 
     public GameObject darkPanel;
 

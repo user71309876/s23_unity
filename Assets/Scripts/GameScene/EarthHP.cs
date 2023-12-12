@@ -35,13 +35,17 @@ public class EarthHP : MonoBehaviour
         {
             gameOver();
         }
-
-        else if (hp_splider.value >= targetEarthHP)
+        else if (hp_splider.value > targetEarthHP)
         {
             hp_splider.value -= 2.0f * Time.deltaTime;
             
             earthHP.text = (Mathf.FloorToInt(hp_splider.value * 20f) + 1).ToString();
+            if(hp_splider.value == 0)
+            {
+                earthHP.text = "0";
+            }
         }
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
