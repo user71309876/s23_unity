@@ -79,13 +79,6 @@ public class EarthHP : MonoBehaviour
         SpawnExplosions(1);
 
         StartCoroutine(DelayBeforeGameOverUI());
-
-        // int temp=1;
-        // while(!PlayerPrefs.HasKey(temp.ToString())){
-        //     temp++;
-        // }
-        // PlayerPrefs.SetInt(temp.ToString(),int.Parse(exp.text));
-        // PlayerPrefs.SetString(temp.ToString(),user_name.text);
     }
 
     public void savePoint(){
@@ -99,9 +92,6 @@ public class EarthHP : MonoBehaviour
 
         PlayerPrefs.SetInt(temp.ToString(),result);
         PlayerPrefs.SetString(temp.ToString()+"S",user_name.text);
-        // Debug.Log(PlayerPrefs.GetInt(temp.ToString()));
-        // Debug.Log(PlayerPrefs.GetString(temp.ToString()+"S"));
-        // Debug.Log(result.ToString()+user_name.text);
     }
 
     private IEnumerator DelayBeforeGameOverUI()
