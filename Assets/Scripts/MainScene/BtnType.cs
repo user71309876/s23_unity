@@ -48,7 +48,7 @@ public class BtnType : MonoBehaviour
                 SettingPrefabController.instance.OpenSettingWindow();
                 break;
             case BTNType.Speed2x:
-                if(currentspeed == 1f)
+                if (currentspeed == 1f)
                 {
                     currentspeed = 2f;
                     Time.timeScale = currentspeed;
