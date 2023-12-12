@@ -4,7 +4,7 @@ using UnityEngine;
 public class SlowDownTower : MonoBehaviour
 {
     //public LayerMask enemyLayer;
-    private float slowRadius = 3f;
+    private float slowRadius = 3.5f;
     public float slowFactor = 0.5f;
 
     void Update()
