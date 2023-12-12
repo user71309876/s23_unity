@@ -13,6 +13,8 @@ public class EarthHP : MonoBehaviour
     private float targetEarthHP;
     private Transform earthTransform;
     public ParticleSystem explosionParticle;
+    [SerializeField] private TMP_Text exp;
+    [SerializeField] private TMP_Text user_name;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +75,29 @@ public class EarthHP : MonoBehaviour
         SpawnExplosions(1);
 
         StartCoroutine(DelayBeforeGameOverUI());
+
+        // int temp=1;
+        // while(!PlayerPrefs.HasKey(temp.ToString())){
+        //     temp++;
+        // }
+        // PlayerPrefs.SetInt(temp.ToString(),int.Parse(exp.text));
+        // PlayerPrefs.SetString(temp.ToString(),user_name.text);
+    }
+
+    public void savePoint(){
+        int temp=1;
+        int result;
+        // Debug.Log(PlayerPrefs.HasKey(temp.ToString()));
+        while(PlayerPrefs.HasKey(temp.ToString())){
+            temp++;
+        }
+        int.TryParse(exp.text,out result);
+
+        PlayerPrefs.SetInt(temp.ToString(),result);
+        PlayerPrefs.SetString(temp.ToString()+"S",user_name.text);
+        // Debug.Log(PlayerPrefs.GetInt(temp.ToString()));
+        // Debug.Log(PlayerPrefs.GetString(temp.ToString()+"S"));
+        // Debug.Log(result.ToString()+user_name.text);
     }
 
     private IEnumerator DelayBeforeGameOverUI()

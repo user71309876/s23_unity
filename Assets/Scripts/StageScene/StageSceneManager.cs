@@ -4,27 +4,36 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class StageSceneManager : MonoBehaviour
 {
-    private GameObject stageDetail;
-    private float force=100f;
-    private float gravity=10f;
-    private Vector2 stageDetailPos;
+    [SerializeField] private RectTransform contents;
+    [SerializeField] private GameObject obj;
+    private string rank;
+    private string name;
+    private string score;
+    private SortedDictionary<string,int> dicScoreInfo = new SortedDictionary<string,int>();
 
     void Start(){
-        //stageDetail 오브젝트 저장
-        stageDetail=GameObject.Find("StageDetail");
+        int temp=1;
+        while(PlayerPrefs.HasKey(temp.ToString())){
+            dicScoreInfo.Add(PlayerPrefs.GetString(temp.ToString()+"S"),PlayerPrefs.GetInt(temp.ToString()));
+            temp++;
+        }
+        temp=1;
+        while(PlayerPrefs.HasKey(temp.ToString()+"S")){
+            GameObject scoreinfo=Instantiate(obj,contents);
+            scoreinfo.transform.Find("RankNumber").GetComponent<TMP_Text>().text=temp.ToString();
+            scoreinfo.transform.Find("PlayerName").GetComponent<TMP_Text>().text=PlayerPrefs.GetString(temp.ToString()+"S");
+            scoreinfo.transform.Find("Score").GetComponent<TMP_Text>().text=PlayerPrefs.GetInt(temp.ToString()).ToString();
+            temp++;
+        }
     }
 
     void Update()
     {
-        stageDetailPos = stageDetail.GetComponent<RectTransform>().anchoredPosition;
-        //stageDetail의 xpos를 50이 될때까지 이동
-        if(stageDetailPos.x < 50){
-            force+=gravity;
-            stageDetail.GetComponent<RectTransform>().anchoredPosition += new Vector2(force, 0f)*Time.deltaTime;
-        }
+
     }
     public void GoMainScene(){
         SceneManager.LoadScene("MainScene");

@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 0
+  currentspeed: 0
 --- !u!114 &830652651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1523,6 +1524,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 3
+  currentspeed: 0
 --- !u!1 &1706946738
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 4
+  currentspeed: 0
 --- !u!1 &1792267656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,6 +1822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 0
+  currentspeed: 0
 --- !u!1 &2078991557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1873,6 +1877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentType: 2
+  currentspeed: 0
 --- !u!114 &2078991560
 MonoBehaviour:
   m_ObjectHideFlags: 0
