@@ -66,10 +66,10 @@ public class MissileLauncher : MonoBehaviour
 
     private void PlayPowerUpParticle()
     {
-        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
+        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z - 5f);
         GameObject powerUpParticle = Instantiate(powerUpParticlePrefab, particlePosition, Quaternion.identity);
 
-        Destroy(powerUpParticle, 2f);
+        Destroy(powerUpParticle, 3f);
     }
 
     public void ApplyAttckSpeed()
@@ -82,10 +82,10 @@ public class MissileLauncher : MonoBehaviour
 
     private void PlaySpeedUpParticle()
     {
-        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.3f, transform.position.z);
+        Vector3 particlePosition = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z - 5f);
         GameObject speedUpParticle = Instantiate(speedUpParticlePrefab, particlePosition, Quaternion.identity);
 
-        Destroy(speedUpParticle, 2f);
+        Destroy(speedUpParticle, 3f);
 
     }
 

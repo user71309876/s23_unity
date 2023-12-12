@@ -85,9 +85,9 @@ public class Missile : MonoBehaviour
                 Instantiate(m_explosionEffect, collision.contacts[0].point, Quaternion.identity);
             }
             SFXManager.instance.playEffectSound("Explosion");
-            ApplyDamageToEnemy(collision.gameObject);
+            //ApplyDamageToEnemy(collision.gameObject);
+            Explode(collision.contacts[0].point);
             Destroy(gameObject);
-            
         }
     }
 
@@ -98,6 +98,21 @@ public class Missile : MonoBehaviour
         if (enemyController != null)
         {
             enemyController.TakeDamage(damage);
+        }
+    }
+
+    void Explode(Vector3 explosionPoint)
+    {
+        // Find all colliders in the explosion radius
+        Collider[] colliders = Physics.OverlapSphere(explosionPoint, 0.3f, m_layerMask);
+
+        // Apply damage to all enemies in the explosion radius
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.layer == LayerMask.NameToLayer("EnemyLayer"))
+            {
+                ApplyDamageToEnemy(collider.gameObject);
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class SettingPrefabController : MonoBehaviour
 {
@@ -148,6 +149,12 @@ public class SettingPrefabController : MonoBehaviour
     private void SetFullScreen(){
         SFXManager.instance.playSFXSound("Button");
         Screen.SetResolution(1920, 1080, true);
+    }
+
+    public void ExitScreen()
+    {
+        SFXManager.instance.playSFXSound("Button");
+        SceneManager.LoadScene("MainScene");
     }
 
     void OnApplicationQuit(){

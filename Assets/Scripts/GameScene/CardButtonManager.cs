@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CardButtonManager : MonoBehaviour
 {
-    public GameObject towerPrefab;
+    public GameObject[] towerPrefabs;
     private Button button;
     
 
@@ -121,8 +121,9 @@ public class CardButtonManager : MonoBehaviour
 
         GameObject randomTile = emptyTiles[Random.Range(0, emptyTiles.Count)];
 
+        GameObject randomTowerPrefab = towerPrefabs[Random.Range(0, towerPrefabs.Length)];
         // 랜덤 타일 위에 타워 추가
-        Instantiate(towerPrefab, randomTile.transform.position, Quaternion.identity);
+        Instantiate(randomTowerPrefab, randomTile.transform.position, Quaternion.identity);
         Debug.Log("타워 추가 완료되었습니다");
     }
 
