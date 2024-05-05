@@ -156,7 +156,7 @@ public class LevelUpEvent : MonoBehaviour
         darkPanel.GetComponent<Image>().DOFade(0.7f, 1f).SetUpdate(true);
 
         SFXManager.instance.playSFXSound("SettingOpen");
-        CardMove(new Vector3(0, -1080, 10));
+        CardMove(new Vector3(0, -1080, 0));
     }
 
     private void RestartGameAndCloseCard()
@@ -170,6 +170,6 @@ public class LevelUpEvent : MonoBehaviour
         darkPanel.GetComponent<Image>().DOFade(0f, 1f).OnComplete(() => darkPanel.SetActive(false));
 
         SFXManager.instance.playSFXSound("SettingClose");
-        CardMove(new Vector3(0, 0, 10));
+        CardMove(new Vector3(0, 1080, 0));
     }
 }
